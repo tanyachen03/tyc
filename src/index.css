@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background-50 text-background-800 font-sans antialiased;
+  }
+  
+  ::selection {
+    @apply bg-primary-200 text-primary-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-600 text-white px-6 py-3 rounded-xl font-semibold 
+           hover:from-primary-600 hover:to-secondary-700 
+           transform hover:scale-[1.02] active:scale-[0.98]
+           transition-all duration-300
+           shadow-lg hover:shadow-xl;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-primary-600 border-2 border-primary-500 px-6 py-3 rounded-xl font-semibold
+           hover:bg-primary-50 
+           transform hover:scale-[1.02] active:scale-[0.98]
+           transition-all duration-300;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl 
+           transform hover:-translate-y-1
+           transition-all duration-300;
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-background-200 
+           focus:border-primary-500 focus:ring-4 focus:ring-primary-100
+           transition-all duration-300;
+  }
+  
+  .section {
+    @apply py-20 md:py-24;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+  
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+  }
+}

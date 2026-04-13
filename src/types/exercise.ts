@@ -1,10 +1,12 @@
 export interface Question {
   id: string;
-  type: 'multiple_choice' | 'true_false';
+  type: 'multiple_choice' | 'true_false' | 'code';
   question: string;
   options?: string[];
-  correctAnswer: number | boolean;
+  correctAnswer: number | boolean | string;
   explanation: string;
+  codeTemplate?: string;
+  codeHint?: string;
 }
 
 export interface Exercise {
@@ -12,6 +14,9 @@ export interface Exercise {
   title: string;
   description: string;
   questions: Question[];
+  courseId: string;
+  chapterId?: string;
+  timeLimit?: number;
 }
 
 export interface MultipleChoiceQuestion extends Question {
@@ -23,4 +28,11 @@ export interface MultipleChoiceQuestion extends Question {
 export interface TrueFalseQuestion extends Question {
   type: 'true_false';
   correctAnswer: boolean;
+}
+
+export interface CodeQuestion extends Question {
+  type: 'code';
+  correctAnswer: string;
+  codeTemplate?: string;
+  codeHint?: string;
 }

@@ -1,7 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
-import { getCourseById, getChapterById, getQuizByChapter } from '../data/courseData';
+import { getCourseById, getChapterById, getQuizByChapter, exercises } from '../data/courseData';
 import { useLearningStore } from '../store/useLearningStore';
 import { useState, useEffect } from 'react';
+import { ExerciseComponent } from '../components/ExerciseComponent';
+import { Exercise } from '../types/exercise';
 
 export function ChapterPage() {
   const { courseId, chapterId } = useParams<{ courseId: string; chapterId: string }>();
@@ -9,6 +11,8 @@ export function ChapterPage() {
   const chapter = courseId && chapterId ? getChapterById(courseId, chapterId) : undefined;
   
   const [isMarkedComplete, setIsMarkedComplete] = useState(false);
+  const [showExercise, setShowExercise] = useState(false);
+  const [currentExercise, setCurrentExercise] = useState<Exercise | null>(null);
   
   const getChapterProgress = useLearningStore(state => state.getChapterProgress);
   const markChapterComplete = useLearningStore(state => state.markChapterComplete);
@@ -41,12 +45,30 @@ export function ChapterPage() {
   const prevChapter = currentChapterIndex > 0 ? course.chapters[currentChapterIndex - 1] : null;
   const nextChapter = currentChapterIndex < course.chapters.length - 1 ? course.chapters[currentChapterIndex + 1] : null;
   const chapterQuiz = courseId && chapterId ? getQuizByChapter(courseId, chapterId) : undefined;
+  const chapterExercise = courseId && chapterId ? exercises.find(ex => ex.courseId === courseId && ex.chapterId === chapterId) : undefined;
 
   const handleMarkComplete = () => {
     if (courseId && chapterId && !isMarkedComplete) {
       markChapterComplete(courseId, chapterId);
       setIsMarkedComplete(true);
     }
+  };
+
+  const handleStartExercise = () => {
+    if (chapterExercise) {
+      setCurrentExercise(chapterExercise as Exercise);
+      setShowExercise(true);
+    }
+  };
+
+  const handleExerciseComplete = (score: number, maxScore: number) => {
+    // 练习完成后的处理，例如记录成绩等
+    console.log(`练习完成，得分: ${score}/${maxScore}`);
+  };
+
+  const handleCloseExercise = () => {
+    setShowExercise(false);
+    setCurrentExercise(null);
   };
 
   useEffect(() => {
@@ -183,12 +205,12 @@ export function ChapterPage() {
                   )}
                 </button>
 
-                {chapter.hasPractice && (
+                {chapter.hasPractice && chapterExercise && (
                   <button
-                    className="w-full py-4 bg-secondary-500 text-white rounded-xl font-semibold opacity-50 cursor-not-allowed"
-                    disabled
+                    onClick={handleStartExercise}
+                    className="w-full py-4 bg-secondary-500 text-white rounded-xl font-semibold hover:bg-secondary-600 transition-colors duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
                   >
-                    开始练习（开发中）
+                    开始练习
                   </button>
                 )}
 
@@ -244,6 +266,17 @@ export function ChapterPage() {
           </div>
         </div>
       </div>
+
+      {showExercise && currentExercise && courseId && (
+        <ExerciseComponent
+          exercise={currentExercise}
+          courseId={courseId}
+          chapterId={chapterId}
+          isQuiz={false}
+          onComplete={handleExerciseComplete}
+          onClose={handleCloseExercise}
+        />
+      )}
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Exercise, Question } from '../types/exercise';
+import { Exercise, Question, CodeQuestion as CodeQuestionType } from '../types/exercise';
 import { MultipleChoiceQuestion } from './MultipleChoiceQuestion';
 import { TrueFalseQuestion } from './TrueFalseQuestion';
+import { CodeQuestion } from './CodeQuestion';
 
 interface ExerciseComponentProps {
   exercise: Exercise;
@@ -13,7 +14,7 @@ interface ExerciseComponentProps {
 }
 
 interface QuestionState {
-  selectedAnswer: number | boolean | null;
+  selectedAnswer: number | boolean | string | null;
   isAnswered: boolean;
   isCorrect: boolean;
 }
@@ -39,7 +40,7 @@ export function ExerciseComponent({
   const currentQuestion = exercise.questions[currentQuestionIndex];
   const currentState = questionStates[currentQuestionIndex];
 
-  const handleSelectAnswer = (answer: number | boolean) => {
+  const handleSelectAnswer = (answer: number | boolean | string) => {
     const newStates = [...questionStates];
     newStates[currentQuestionIndex] = {
       ...newStates[currentQuestionIndex],
@@ -61,9 +62,11 @@ export function ExerciseComponent({
     setQuestionStates(newStates);
   };
 
-  const checkAnswer = (question: Question, answer: number | boolean): boolean => {
-    if (question.type === 'multiple_choice') {
-      return answer === question.correctAnswer;
+  const checkAnswer = (question: Question, answer: number | boolean | string): boolean => {
+    if (question.type === 'code') {
+      // 对于代码问题，我们去除空格和换行符后比较
+      const normalizeCode = (code: string) => code.trim().replace(/\s+/g, ' ');
+      return normalizeCode(answer as string) === normalizeCode(question.correctAnswer as string);
     } else {
       return answer === question.correctAnswer;
     }
@@ -101,11 +104,20 @@ export function ExerciseComponent({
           onSelectAnswer={(answer) => handleSelectAnswer(answer)}
         />
       );
-    } else {
+    } else if (question.type === 'true_false') {
       return (
         <TrueFalseQuestion
           question={question as any}
           selectedAnswer={state.selectedAnswer as boolean | null}
+          isAnswered={state.isAnswered}
+          onSelectAnswer={(answer) => handleSelectAnswer(answer)}
+        />
+      );
+    } else {
+      return (
+        <CodeQuestion
+          question={question as CodeQuestionType}
+          selectedAnswer={state.selectedAnswer as string | null}
           isAnswered={state.isAnswered}
           onSelectAnswer={(answer) => handleSelectAnswer(answer)}
         />

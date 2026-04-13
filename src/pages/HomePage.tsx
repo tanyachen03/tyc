@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
 import { courses } from '../data/courseData';
 import { useLearningStore } from '../store/useLearningStore';
+import { useAchievementStore } from '../store/useAchievementStore';
 
 export function HomePage() {
   const getCourseProgress = useLearningStore(state => state.getCourseProgress);
+  const totalLearningTime = useLearningStore(state => state.totalLearningTime);
+  const completedChapters = useLearningStore(state => state.completedChapters.length);
+  const unlockedAchievements = useAchievementStore(state => state.achievements.filter(a => a.unlocked).length);
+  const totalAchievements = useAchievementStore(state => state.achievements.length);
 
   const getLevelColor = (level: string) => {
     switch (level) {
@@ -31,34 +36,46 @@ export function HomePage() {
     }
   };
 
-  const learningStages = [
+  const learningPath = [
     {
       stage: '第一阶段',
-      title: 'Python 编程基础',
-      description: '核心语法、流程控制、数据结构、函数基础',
-      icon: '🚀',
-      topics: ['变量与数据类型', '条件判断与循环', '列表、字典、元组', '函数定义与调用']
+      title: '数据分析基础',
+      description: 'Python基础、数据结构、NumPy数组操作',
+      icon: '📊',
+      topics: ['Python核心语法', '数据结构与算法', 'NumPy科学计算', '基础数据处理'],
+      courses: ['course-1']
     },
     {
       stage: '第二阶段',
-      title: 'Python 核心进阶',
-      description: '文件操作、模块包、面向对象、异常处理',
-      icon: '⚡',
-      topics: ['文件系统操作', '模块与包管理', '面向对象编程', '错误与异常处理']
+      title: '数据处理与分析',
+      description: 'Pandas数据处理、数据清洗、数据可视化',
+      icon: '🔍',
+      topics: ['Pandas数据分析', '数据清洗与预处理', 'Matplotlib可视化', 'Seaborn高级图表'],
+      courses: ['course-1']
     },
     {
       stage: '第三阶段',
-      title: '高级特性与工程实践',
-      description: '函数式编程、迭代器、装饰器、并发编程',
-      icon: '🔧',
-      topics: ['高阶函数与迭代器', '装饰器与上下文管理', '并发编程入门', '元编程与内省']
+      title: '数据库基础',
+      description: 'SQL语法、数据查询、数据库管理',
+      icon: '💾',
+      topics: ['SQL基础概念', 'SELECT语句', '数据修改语句', '表连接', '聚合函数'],
+      courses: ['course-3']
     },
     {
       stage: '第四阶段',
-      title: '专项技能与应用领域',
-      description: '数据分析、可视化、Web开发、自动化',
-      icon: '🎯',
-      topics: ['NumPy与Pandas', '数据可视化', 'Web开发', '办公自动化']
+      title: '机器学习入门',
+      description: '机器学习基础、监督学习、模型评估',
+      icon: '🤖',
+      topics: ['机器学习概述', '线性回归', '分类算法', '模型评估与优化'],
+      courses: ['course-2']
+    },
+    {
+      stage: '第五阶段',
+      title: '实战应用',
+      description: '综合项目、案例分析、行业应用',
+      icon: '🚀',
+      topics: ['数据分析项目实战', '行业案例分析', '数据驱动决策', '职业技能提升'],
+      courses: ['course-1', 'course-2', 'course-3']
     }
   ];
 
@@ -69,8 +86,8 @@ export function HomePage() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       ),
-      title: '系统化课程',
-      description: '按照四个阶段系统学习，从入门到精通',
+      title: '系统化课程体系',
+      description: '按照四个阶段系统学习，从数据分析基础到实战应用',
       color: 'primary'
     },
     {
@@ -79,8 +96,8 @@ export function HomePage() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 01-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 01.806-1.946 3.42 3.42 0 013.138-3.138z" />
         </svg>
       ),
-      title: '实践导向',
-      description: '丰富的练习和项目，让你在实战中掌握技能',
+      title: '互动式学习体验',
+      description: '练习、测验、即时反馈，让学习更高效',
       color: 'secondary'
     },
     {
@@ -89,8 +106,8 @@ export function HomePage() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
-      title: '成就激励',
-      description: '勋章系统和学习进度追踪，让学习更有动力',
+      title: '成就激励系统',
+      description: '勋章、等级、学习进度追踪，让学习更有动力',
       color: 'accent'
     }
   ];
@@ -106,52 +123,71 @@ export function HomePage() {
         <div className="container-custom py-24 md:py-32 relative z-10">
           <div className="text-center animate-fade-in-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
-              Python 系统性学习平台
+              数据分析在线教育平台
             </h1>
             <p className="text-xl text-primary-100 mb-10 max-w-3xl mx-auto text-balance">
-              四个阶段、循序渐进，从 Python 基础到高级应用，成就你的数据分析师之路
+              专为商务数据分析与应用专业学生打造的互动式学习平台，从基础到实战，成就你的数据分析师之路
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="#curriculum" 
+              <Link 
+                to="#learning-path" 
                 className="btn-primary text-lg animate-fade-in-up animate-delay-200"
               >
-                查看课程大纲
-              </a>
-              <a 
-                href="#courses" 
+                查看学习大纲
+              </Link>
+              <Link 
+                to="#courses" 
                 className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-primary-600 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] animate-fade-in-up animate-delay-300"
               >
                 开始学习
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
 
-      <section id="curriculum" className="section bg-white">
+      <section className="section bg-white py-16">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-4xl font-bold text-primary-600 mb-2">{Math.round(totalLearningTime / 60)}</div>
+              <div className="text-background-600">学习时长 (分钟)</div>
+            </div>
+            <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-4xl font-bold text-secondary-600 mb-2">{completedChapters}</div>
+              <div className="text-background-600">已完成章节</div>
+            </div>
+            <div className="bg-gradient-to-br from-accent-50 to-accent-100 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-4xl font-bold text-accent-600 mb-2">{unlockedAchievements}/{totalAchievements}</div>
+              <div className="text-background-600">已解锁成就</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="learning-path" className="section bg-background-50">
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-background-900 mb-4 animate-fade-in-up">
-              系统性学习大纲
+              系统化学习路径
             </h2>
             <p className="text-background-600 max-w-2xl mx-auto text-lg animate-fade-in-up animate-delay-100">
-              四个阶段，从零基础到高级应用，全面覆盖 Python 编程技能
+              五个阶段，从数据分析基础到实战应用，全面覆盖商务数据分析所需技能
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {learningStages.map((stage, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            {learningPath.map((stage, index) => (
               <div 
                 key={index}
-                className="bg-background-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up border border-background-100"
+                className="bg-white rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up border border-background-100"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="text-5xl mb-4">{stage.icon}</div>
                 <div className="text-sm font-semibold text-primary-600 mb-2">{stage.stage}</div>
                 <h3 className="text-xl font-bold text-background-900 mb-3">{stage.title}</h3>
                 <p className="text-background-600 mb-4 text-sm">{stage.description}</p>
-                <div className="space-y-2">
+                <div className="space-y-2 mb-6">
                   {stage.topics.map((topic, topicIndex) => (
                     <div key={topicIndex} className="flex items-center text-sm">
                       <svg className="w-4 h-4 text-accent-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -160,6 +196,23 @@ export function HomePage() {
                       <span className="text-background-700">{topic}</span>
                     </div>
                   ))}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {stage.courses.map((courseId, courseIndex) => {
+                    const course = courses.find(c => c.id === courseId);
+                    if (course) {
+                      return (
+                        <Link 
+                          key={courseIndex}
+                          to={`/course/${course.id}`}
+                          className="px-3 py-1.5 bg-primary-100 text-primary-700 text-xs font-medium rounded-lg hover:bg-primary-200 transition-colors duration-200"
+                        >
+                          {course.title}
+                        </Link>
+                      );
+                    }
+                    return null;
+                  })}
                 </div>
               </div>
             ))}
@@ -174,7 +227,7 @@ export function HomePage() {
               精选课程
             </h2>
             <p className="text-background-600 max-w-2xl mx-auto text-lg animate-fade-in-up animate-delay-100">
-              精心设计的课程体系，涵盖数据分析、机器学习、数据库等热门领域
+              精心设计的课程体系，涵盖数据分析、机器学习等热门领域
             </p>
           </div>
 
@@ -189,7 +242,7 @@ export function HomePage() {
                 <Link 
                   key={course.id}
                   to={`/course/${course.id}`}
-                  className="card overflow-hidden animate-fade-in-up"
+                  className="group card overflow-hidden animate-fade-in-up"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="relative overflow-hidden">
@@ -270,11 +323,11 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="about" className="section bg-white">
+      <section id="features" className="section bg-white">
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-background-900 mb-4 animate-fade-in-up">
-              为什么选择我们
+              平台特色
             </h2>
             <p className="text-background-600 max-w-2xl mx-auto text-lg animate-fade-in-up animate-delay-100">
               我们致力于为你提供最优质的学习体验
@@ -299,6 +352,33 @@ export function HomePage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section bg-gradient-to-br from-primary-50 to-secondary-50 py-20">
+        <div className="container-custom">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-background-900 mb-6 animate-fade-in-up">
+              开始你的数据分析学习之旅
+            </h2>
+            <p className="text-background-600 text-lg mb-8 animate-fade-in-up animate-delay-100">
+              无论你是零基础还是有一定基础，我们的课程都能帮助你掌握数据分析技能，开启职业新篇章
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animate-delay-200">
+              <Link 
+                to="#courses" 
+                className="btn-primary text-lg"
+              >
+                浏览课程
+              </Link>
+              <Link 
+                to="/achievements" 
+                className="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-xl font-semibold hover:bg-primary-600 hover:text-white transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+              >
+                查看成就系统
+              </Link>
+            </div>
           </div>
         </div>
       </section>

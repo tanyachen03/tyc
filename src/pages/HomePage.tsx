@@ -31,6 +31,37 @@ export function HomePage() {
     }
   };
 
+  const learningStages = [
+    {
+      stage: '第一阶段',
+      title: 'Python 编程基础',
+      description: '核心语法、流程控制、数据结构、函数基础',
+      icon: '🚀',
+      topics: ['变量与数据类型', '条件判断与循环', '列表、字典、元组', '函数定义与调用']
+    },
+    {
+      stage: '第二阶段',
+      title: 'Python 核心进阶',
+      description: '文件操作、模块包、面向对象、异常处理',
+      icon: '⚡',
+      topics: ['文件系统操作', '模块与包管理', '面向对象编程', '错误与异常处理']
+    },
+    {
+      stage: '第三阶段',
+      title: '高级特性与工程实践',
+      description: '函数式编程、迭代器、装饰器、并发编程',
+      icon: '🔧',
+      topics: ['高阶函数与迭代器', '装饰器与上下文管理', '并发编程入门', '元编程与内省']
+    },
+    {
+      stage: '第四阶段',
+      title: '专项技能与应用领域',
+      description: '数据分析、可视化、Web开发、自动化',
+      icon: '🎯',
+      topics: ['NumPy与Pandas', '数据可视化', 'Web开发', '办公自动化']
+    }
+  ];
+
   const features = [
     {
       icon: (
@@ -38,14 +69,14 @@ export function HomePage() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       ),
-      title: '专业课程',
-      description: '由行业专家精心设计的课程体系，内容全面且实用',
+      title: '系统化课程',
+      description: '按照四个阶段系统学习，从入门到精通',
       color: 'primary'
     },
     {
       icon: (
         <svg className="w-10 h-10 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 01-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 01.806-1.946 3.42 3.42 0 013.138-3.138z" />
         </svg>
       ),
       title: '实践导向',
@@ -58,8 +89,8 @@ export function HomePage() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
-      title: '随时学习',
-      description: '支持多端访问，随时随地都能继续你的学习',
+      title: '成就激励',
+      description: '勋章系统和学习进度追踪，让学习更有动力',
       color: 'accent'
     }
   ];
@@ -75,25 +106,66 @@ export function HomePage() {
         <div className="container-custom py-24 md:py-32 relative z-10">
           <div className="text-center animate-fade-in-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
-              开启你的数据学习之旅
+              Python 系统性学习平台
             </h1>
             <p className="text-xl text-primary-100 mb-10 max-w-3xl mx-auto text-balance">
-              专业的数据分析、机器学习课程，从零基础到高级应用，助你成为数据专家
+              四个阶段、循序渐进，从 Python 基础到高级应用，成就你的数据分析师之路
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="#courses" 
+                href="#curriculum" 
                 className="btn-primary text-lg animate-fade-in-up animate-delay-200"
               >
-                浏览课程
+                查看课程大纲
               </a>
-              <button className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-primary-600 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] animate-fade-in-up animate-delay-300">
-                了解更多
-              </button>
+              <a 
+                href="#courses" 
+                className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-primary-600 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] animate-fade-in-up animate-delay-300"
+              >
+                开始学习
+              </a>
             </div>
           </div>
         </div>
       </div>
+
+      <section id="curriculum" className="section bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-background-900 mb-4 animate-fade-in-up">
+              系统性学习大纲
+            </h2>
+            <p className="text-background-600 max-w-2xl mx-auto text-lg animate-fade-in-up animate-delay-100">
+              四个阶段，从零基础到高级应用，全面覆盖 Python 编程技能
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {learningStages.map((stage, index) => (
+              <div 
+                key={index}
+                className="bg-background-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up border border-background-100"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="text-5xl mb-4">{stage.icon}</div>
+                <div className="text-sm font-semibold text-primary-600 mb-2">{stage.stage}</div>
+                <h3 className="text-xl font-bold text-background-900 mb-3">{stage.title}</h3>
+                <p className="text-background-600 mb-4 text-sm">{stage.description}</p>
+                <div className="space-y-2">
+                  {stage.topics.map((topic, topicIndex) => (
+                    <div key={topicIndex} className="flex items-center text-sm">
+                      <svg className="w-4 h-4 text-accent-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-background-700">{topic}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section id="courses" className="section">
         <div className="container-custom">

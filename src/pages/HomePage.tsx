@@ -697,6 +697,114 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* 实战训练 Section */}
+      <section id="training" className="section py-20 bg-gradient-to-b from-blue-50 to-indigo-50">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-100 to-blue-100 text-cyan-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              实战训练
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+              Python 编程练习项目集
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              从入门到进阶，10个精心设计的项目，让你在实战中掌握 Python 编程技能
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="bg-white rounded-3xl shadow-2xl shadow-blue-200/50 overflow-hidden">
+              <div className="grid lg:grid-cols-2 gap-0">
+                <div className="p-10 flex flex-col justify-center">
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">系统化学习路径</h3>
+                        <p className="text-gray-600">从入门到进阶，10个项目循序渐进</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">实时代码运行</h3>
+                        <p className="text-gray-600">内置代码编辑器，直接在浏览器运行 Python</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 01-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 01.806-1.946 3.42 3.42 0 013.138-3.138" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">进度自动保存</h3>
+                        <p className="text-gray-600">你的代码进度会自动保存到本地</p>
+                      </div>
+                    </div>
+
+                    <div className="pt-6">
+                      <Link
+                        to="/training"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-2xl hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-105"
+                      >
+                        开始训练
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative h-full min-h-[400px] bg-gradient-to-br from-gray-900 to-cyan-900 p-8 flex items-center justify-center overflow-hidden">
+                  <div className="relative z-10 w-full max-w-md">
+                    <div className="bg-gray-800 rounded-2xl shadow-2xl overflow-hidden border border-gray-700">
+                      <div className="flex items-center gap-2 px-4 py-3 bg-gray-900 border-b border-gray-700">
+                        <div className="flex gap-1.5">
+                          <span className="w-3 h-3 rounded-full bg-red-500"></span>
+                          <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
+                          <span className="w-3 h-3 rounded-full bg-green-500"></span>
+                        </div>
+                        <span className="text-gray-500 text-xs ml-2">项目：个人记账本</span>
+                      </div>
+                      <div className="p-4 bg-gray-900 font-mono text-xs">
+                        <div className="text-cyan-400"># 个人记账本项目</div>
+                        <div className="text-gray-400"># 在这里开始编写你的代码</div>
+                        <div></div>
+                        <div><span className="text-purple-400">import</span> <span className="text-green-400">datetime</span></div>
+                        <div><span className="text-purple-400">import</span> <span className="text-green-400">csv</span></div>
+                        <div></div>
+                        <div><span className="text-blue-400">print</span>(<span className="text-yellow-400">"欢迎使用个人记账本！"</span>)</div>
+                        <div className="text-green-400 animate-pulse mt-2">
+                          &gt; 欢迎使用个人记账本！
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* 背景装饰 */}
+                  <div className="absolute top-10 right-10 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute bottom-10 left-10 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 relative overflow-hidden">
         {/* Animated Background */}

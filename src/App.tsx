@@ -7,6 +7,8 @@ import { ChapterPage } from './pages/ChapterPage';
 import { QuizPage } from './pages/QuizPage';
 import { AchievementsPage } from './pages/AchievementsPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
+import { TrainingListPage } from './pages/TrainingListPage';
+import { TrainingDetailPage } from './pages/TrainingDetailPage';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/quiz/:quizId" element={<QuizPage />} />
             <Route path="/achievements" element={<AchievementsPage />} />
             <Route path="/project/:projectId" element={<ProjectDetailPage />} />
+            <Route path="/training" element={<TrainingListPage />} />
+            <Route path="/training/:id" element={<TrainingDetailPage />} />
           </Routes>
         </main>
         <Footer />

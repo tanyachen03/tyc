@@ -6,6 +6,7 @@ import { CourseDetailPage } from './pages/CourseDetailPage';
 import { ChapterPage } from './pages/ChapterPage';
 import { QuizPage } from './pages/QuizPage';
 import { AchievementsPage } from './pages/AchievementsPage';
+import { ProjectDetailPage } from './pages/ProjectDetailPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/course/:courseId/chapter/:chapterId" element={<ChapterPage />} />
             <Route path="/quiz/:quizId" element={<QuizPage />} />
             <Route path="/achievements" element={<AchievementsPage />} />
+            <Route path="/project/:projectId" element={<ProjectDetailPage />} />
           </Routes>
         </main>
         <Footer />

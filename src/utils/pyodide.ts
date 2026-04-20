@@ -29,6 +29,6 @@ export async function runPythonCode(code: string) {
     const result = await py.runPythonAsync(code);
     return { success: true, result };
   } catch (error) {
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : String(error) };
   }
 }

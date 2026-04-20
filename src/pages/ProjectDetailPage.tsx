@@ -47,7 +47,7 @@ export function ProjectDetailPage({}: ProjectDetailPageProps) {
         setOutput(`Error: ${result.error}`);
       }
     } catch (error) {
-      setOutput(`Error: ${error.message}`);
+      setOutput(`Error: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
       setIsRunning(false);
     }

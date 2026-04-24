@@ -45,82 +45,553 @@ export interface Course {
 export const courses: Course[] = [
   {
     id: 'course-1',
-    title: 'Python数据分析基础',
-    description: '从零开始学习Python数据分析，掌握Pandas、NumPy等核心库的使用',
-    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Python%20data%20analysis%20course%20banner%20with%20charts%20and%20code&image_size=landscape_16_9',
-    category: '数据分析',
+    title: 'Python从入门到进阶',
+    description: '完整的Python学习路径，从零基础到进阶编程，包含学-看-练-写-测一站式学习体验',
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Python%20programming%20course%20banner%20with%20code%20and%20learning%20path&image_size=landscape_16_9',
+    category: 'Python',
     level: 'beginner',
-    duration: '12小时',
-    tags: ['Python', 'Pandas', 'NumPy', '数据分析'],
-    comprehensiveQuizId: 'quiz-comp-1',
+    duration: '20小时',
+    tags: ['Python', '编程', '从入门到进阶', '一站式学习'],
+    comprehensiveQuizId: 'quiz-python-comp-1',
     chapters: [
       {
         id: 'chapter-1',
-        title: 'Python基础入门',
-        description: '学习Python的基本语法和数据结构',
-        content: `# Python基础入门
-
-## 变量与数据类型
-
-Python是一种动态类型语言，不需要显式声明变量类型。
-
-\`\`\`python
-# 整数
-age = 25
-
-# 浮点数
-price = 19.99
-
-# 字符串
-name = "张三"
-
-# 布尔值
-is_student = True
-\`\`\`
-
-## 列表与字典
-
-列表和字典是Python中最常用的数据结构。
-
-\`\`\`python
-# 列表
-numbers = [1, 2, 3, 4, 5]
-
-# 字典
-person = {
-    "name": "张三",
-    "age": 25,
-    "city": "北京"
-}
-\`\`\`
-
-## 条件语句与循环
-
-\`\`\`python
-# if语句
-if age >= 18:
-    print("成年人")
-else:
-    print("未成年人")
-
-# for循环
-for num in numbers:
-    print(num)
-\`\`\``,
-        duration: '2小时',
+        title: 'Python入门',
+        description: '了解Python的基本概念和环境搭建',
+        content: "# Python入门\n\n## Python简介\n\nPython是一种简单易学、功能强大的编程语言，广泛应用于Web开发、数据分析、人工智能等领域。\n\n## 环境搭建\n\n### 安装Python\n\n1. 访问 [Python官网](https://www.python.org/)\n2. 下载对应操作系统的安装包\n3. 运行安装程序，勾选\"Add Python to PATH\"\n4. 验证安装：在命令行中输入 `python --version`\n\n### 安装IDE\n\n推荐使用以下IDE：\n- **PyCharm**：功能强大的Python IDE\n- **VS Code**：轻量级编辑器，需安装Python插件\n- **Jupyter Notebook**：交互式编程环境\n\n## 第一个Python程序\n\n\`\`\`python\nprint('Hello, World!')\n\`\`\`\n\n## 运行方式\n\n1. **命令行**：`python filename.py`\n2. **IDE**：直接运行或调试\n3. **交互式**：`python` 命令进入交互式环境",
+        duration: '1小时',
         hasPractice: true,
         hasQuiz: true,
         quizId: 'quiz-chapter-1'
       },
       {
         id: 'chapter-2',
-        title: 'NumPy数组操作',
-        description: '掌握NumPy库的核心功能和数组操作',
-        content: `# NumPy数组操作
+        title: '基础语法',
+        description: '学习Python的基本语法规则和语句结构',
+        content: `# 基础语法
 
-## NumPy简介
+## 变量与赋值
 
-NumPy是Python科学计算的核心库，提供了高性能的多维数组对象。
+\`\`\`python
+# 变量赋值
+name = "张三"
+age = 25
+price = 19.99
+is_student = True
+\`\`\`
+
+## 注释
+
+\`\`\`python
+# 单行注释
+
+"""
+多行注释
+可以跨越多行
+"""
+\`\`\`
+
+## 缩进
+
+Python使用缩进来表示代码块，通常使用4个空格或1个制表符。
+
+\`\`\`python
+if age >= 18:
+    print("成年人")
+else:
+    print("未成年人")
+\`\`\`
+
+## 运算符
+
+- **算术运算符**：+, -, *, /, //, %, **
+- **比较运算符**：==, !=, >, <, >=, <=
+- **逻辑运算符**：and, or, not
+- **赋值运算符**：=, +=, -=, *=, /=
+
+## 输入输出
+
+\`\`\`python
+# 输入
+name = input("请输入你的名字：")
+
+# 输出
+print("你好，" + name)
+print(f"你好，{name}")  # f-string
+\`\`\``,
+        duration: '2小时',
+        hasPractice: true,
+        hasQuiz: true,
+        quizId: 'quiz-chapter-2'
+      },
+      {
+        id: 'chapter-3',
+        title: '数据类型',
+        description: '掌握Python的基本数据类型和数据结构',
+        content: `# 数据类型
+
+## 基本数据类型
+
+- **整数 (int)**：如 1, 2, 3
+- **浮点数 (float)**：如 3.14, 1.0
+- **字符串 (str)**：如 "Hello", 'World'
+- **布尔值 (bool)**：True, False
+- **None**：表示空值
+
+## 字符串操作
+
+\`\`\`python
+s = "Hello, Python!"
+print(s[0])  # 访问单个字符
+print(s[0:5])  # 切片
+print(len(s))  # 长度
+print(s.upper())  # 大写
+print(s.lower())  # 小写
+print(s.replace("Python", "World"))  # 替换
+\`\`\`
+
+## 列表 (list)
+
+\`\`\`python
+# 创建列表
+numbers = [1, 2, 3, 4, 5]
+
+# 访问元素
+print(numbers[0])
+
+# 添加元素
+numbers.append(6)
+
+# 插入元素
+numbers.insert(0, 0)
+
+# 删除元素
+numbers.remove(3)
+
+# 切片
+print(numbers[1:4])
+\`\`\`
+
+## 元组 (tuple)
+
+元组是不可变的列表。
+
+\`\`\`python
+# 创建元组
+t = (1, 2, 3)
+
+# 访问元素
+print(t[0])
+\`\`\`
+
+## 字典 (dict)
+
+\`\`\`python
+# 创建字典
+person = {
+    "name": "张三",
+    "age": 25,
+    "city": "北京"
+}
+
+# 访问元素
+print(person["name"])
+print(person.get("age"))
+
+# 添加/修改元素
+person["email"] = "zhangsan@example.com"
+
+# 删除元素
+del person["city"]
+\`\`\`
+
+## 集合 (set)
+
+\`\`\`python
+# 创建集合
+s = {1, 2, 3, 4, 5}
+
+# 添加元素
+s.add(6)
+
+# 移除元素
+s.remove(3)
+
+# 集合运算
+a = {1, 2, 3}
+b = {3, 4, 5}
+print(a | b)  # 并集
+print(a & b)  # 交集
+print(a - b)  # 差集
+\`\`\``,
+        duration: '2.5小时',
+        hasPractice: true,
+        hasQuiz: true,
+        quizId: 'quiz-chapter-3'
+      },
+      {
+        id: 'chapter-4',
+        title: '函数',
+        description: '学习如何定义和使用函数',
+        content: `# 函数
+
+## 定义函数
+
+\`\`\`python
+def greet(name):
+    """问候函数"""
+    print(f"你好，{name}！")
+
+# 调用函数
+greet("张三")
+\`\`\`
+
+## 函数参数
+
+### 位置参数
+
+\`\`\`python
+def add(a, b):
+    return a + b
+
+print(add(1, 2))
+\`\`\`
+
+### 默认参数
+
+\`\`\`python
+def greet(name, greeting="你好"):
+    print(f"{greeting}，{name}！")
+
+# 使用默认值
+greet("张三")
+# 覆盖默认值
+greet("张三", "早上好")
+\`\`\`
+
+### 关键字参数
+
+\`\`\`python
+def describe_person(name, age, city):
+    print(f"姓名：{name}")
+    print(f"年龄：{age}")
+    print(f"城市：{city}")
+
+# 使用关键字参数
+describe_person(name="张三", age=25, city="北京")
+\`\`\`
+
+### 可变参数
+
+\`\`\`python
+def sum_numbers(*numbers):
+    total = 0
+    for num in numbers:
+        total += num
+    return total
+
+print(sum_numbers(1, 2, 3, 4, 5))
+\`\`\`
+
+### 关键字可变参数
+
+\`\`\`python
+def print_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+print_info(name="张三", age=25, city="北京")
+\`\`\`
+
+## 函数返回值
+
+\`\`\`python
+def calculate(a, b):
+    return a + b, a - b, a * b, a / b
+
+# 接收多个返回值
+add, sub, mul, div = calculate(10, 5)
+print(add, sub, mul, div)
+\`\`\`
+
+## 递归函数
+
+\`\`\`python
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+print(factorial(5))
+\`\`\``,
+        duration: '2.5小时',
+        hasPractice: true,
+        hasQuiz: true,
+        quizId: 'quiz-chapter-4'
+      },
+      {
+        id: 'chapter-5',
+        title: '模块',
+        description: '学习如何使用和创建Python模块',
+        content: "# 模块\n\n## 导入模块\n\n\`\`\`python\n# 导入整个模块\nimport math\n\n# 使用模块中的函数\nprint(math.sqrt(16))\n\n# 导入特定函数\nfrom math import sqrt, sin\n\n# 使用别名\nimport math as m\nprint(m.pi)\n\n# 导入所有函数\nfrom math import *\n\`\`\`\n\n## 常用标准库\n\n- **math**：数学函数\n- **random**：随机数生成\n- **datetime**：日期时间处理\n- **os**：操作系统接口\n- **sys**：系统相关参数\n- **json**：JSON数据处理\n- **re**：正则表达式\n\n## 创建模块\n\n1. 创建一个.py文件，例如 `mymodule.py`\n2. 在文件中定义函数和变量\n3. 在其他文件中导入使用\n\n## 包\n\n包是包含多个模块的目录，需要包含 `__init__.py` 文件。\n\n\`\`\`\nmy_package/\n├── __init__.py\n├── module1.py\n└── module2.py\n\`\`\`\n\n## 第三方库\n\n使用pip安装第三方库：\n\n\`\`\`bash\npip install numpy pandas matplotlib\n\`\`\`\n\n导入并使用：\n\n\`\`\`python\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\`\`\`", 
+        duration: '2小时',
+        hasPractice: true,
+        hasQuiz: true,
+        quizId: 'quiz-chapter-5'
+      },
+      {
+        id: 'chapter-6',
+        title: '文件操作',
+        description: '学习如何读写文件',
+        content: "# 文件操作\n\n## 打开和关闭文件\n\n\`\`\`python\n# 打开文件\nfile = open(\"example.txt\", \"r\")\n\n# 读取内容\ncontent = file.read()\nprint(content)\n\n# 关闭文件\nfile.close()\n\`\`\`\n\n## 文件模式\n\n- **r**：只读（默认）\n- **w**：写入（覆盖原有内容）\n- **a**：追加\n- **x**：创建新文件\n- **b**：二进制模式\n- **+**：读写模式\n\n## 使用with语句\n\n自动处理文件关闭：\n\n\`\`\`python\nwith open(\"example.txt\", \"r\") as file:\n    content = file.read()\n    print(content)\n# 文件自动关闭\n\`\`\`\n\n## 读取文件\n\n\`\`\`python\n# 读取整个文件\nwith open(\"example.txt\", \"r\") as file:\n    content = file.read()\n\n# 逐行读取\nwith open(\"example.txt\", \"r\") as file:\n    for line in file:\n        print(line.strip())\n\n# 读取所有行\nwith open(\"example.txt\", \"r\") as file:\n    lines = file.readlines()\n\`\`\`\n\n## 写入文件\n\n\`\`\`python\n# 写入文件\nwith open(\"example.txt\", \"w\") as file:\n    file.write(\"Hello, World!\\n\")\n    file.write(\"This is a test.\\n\")\n\n# 追加内容\nwith open(\"example.txt\", \"a\") as file:\n    file.write(\"Additional content.\\n\")\n\`\`\`\n\n## 处理CSV文件\n\n\`\`\`python\nimport csv\n\n# 写入CSV\nwith open(\"data.csv\", \"w\", newline=\"\") as file:\n    writer = csv.writer(file)\n    writer.writerow([\"Name\", \"Age\", \"City\"])\n    writer.writerow([\"张三\", 25, \"北京\"])\n    writer.writerow([\"李四\", 30, \"上海\"])\n\n# 读取CSV\nwith open(\"data.csv\", \"r\") as file:\n    reader = csv.reader(file)\n    for row in reader:\n        print(row)\n\`\`\`\n\n## 处理JSON文件\n\n\`\`\`python\nimport json\n\n# 写入JSON\ndata = {\n    \"name\": \"张三\",\n    \"age\": 25,\n    \"city\": \"北京\"\n}\n\nwith open(\"data.json\", \"w\", encoding=\"utf-8\") as file:\n    json.dump(data, file, ensure_ascii=False, indent=2)\n\n# 读取JSON\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as file:\n    data = json.load(file)\n    print(data)\n\`\`\`", 
+        duration: '2小时',
+        hasPractice: true,
+        hasQuiz: true,
+        quizId: 'quiz-chapter-6'
+      },
+      {
+        id: 'chapter-7',
+        title: '异常处理',
+        description: '学习如何处理程序运行时的错误',
+        content: `# 异常处理
+
+## 基本异常处理
+
+\`\`\`python
+try:
+    # 可能引发异常的代码
+    result = 10 / 0
+except ZeroDivisionError:
+    # 处理特定异常
+    print("除数不能为零")
+except Exception as e:
+    # 处理其他异常
+    print(f"发生错误：{e}")
+else:
+    # 没有异常时执行
+    print("计算成功")
+finally:
+    # 无论是否有异常都执行
+    print("程序结束")
+\`\`\`
+
+## 常见异常类型
+
+- **SyntaxError**：语法错误
+- **NameError**：名称错误
+- **TypeError**：类型错误
+- **ValueError**：值错误
+- **ZeroDivisionError**：除零错误
+- **FileNotFoundError**：文件未找到错误
+- **ImportError**：导入错误
+
+## 自定义异常
+
+\`\`\`python
+class CustomError(Exception):
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)
+
+try:
+    raise CustomError("这是一个自定义异常")
+except CustomError as e:
+    print(f"捕获到自定义异常：{e}")
+\`\`\`
+
+## 断言
+
+\`\`\`python
+def divide(a, b):
+    assert b != 0, "除数不能为零"
+    return a / b
+
+try:
+    result = divide(10, 0)
+except AssertionError as e:
+    print(f"断言失败：{e}")
+\`\`\`
+
+## 异常处理的最佳实践
+
+1. 只捕获你能处理的异常
+2. 提供具体的错误信息
+3. 不要过度使用异常处理
+4. 清理资源（使用finally或with语句）
+5. 记录异常信息
+\`\`\``,
+        duration: '1.5小时',
+        hasPractice: true,
+        hasQuiz: true,
+        quizId: 'quiz-chapter-7'
+      },
+      {
+        id: 'chapter-8',
+        title: '面向对象',
+        description: '学习Python的面向对象编程',
+        content: `# 面向对象
+
+## 类和对象
+
+\`\`\`python
+# 定义类
+class Person:
+    # 类属性
+    species = "人类"
+    
+    # 初始化方法
+    def __init__(self, name, age):
+        # 实例属性
+        self.name = name
+        self.age = age
+    
+    # 实例方法
+    def greet(self):
+        print(f"你好，我是{self.name}，今年{self.age}岁。")
+    
+    # 类方法
+    @classmethod
+    def get_species(cls):
+        return cls.species
+    
+    # 静态方法
+    @staticmethod
+    def is_adult(age):
+        return age >= 18
+
+# 创建对象
+person = Person("张三", 25)
+
+# 访问属性
+print(person.name)
+print(person.age)
+
+# 调用方法
+person.greet()
+
+# 访问类属性
+print(Person.species)
+
+# 调用类方法
+print(Person.get_species())
+
+# 调用静态方法
+print(Person.is_adult(25))
+\`\`\`
+
+## 继承
+
+\`\`\`python
+# 父类
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    def make_sound(self):
+        print("动物发出声音")
+
+# 子类
+class Dog(Animal):
+    def make_sound(self):
+        print("汪汪汪")
+
+class Cat(Animal):
+    def make_sound(self):
+        print("喵喵喵")
+
+# 创建对象
+dog = Dog("旺财")
+cat = Cat("咪咪")
+
+# 调用方法
+dog.make_sound()
+cat.make_sound()
+\`\`\`
+
+## 多态
+
+\`\`\`python
+def animal_sound(animal):
+    animal.make_sound()
+
+# 传入不同的对象
+animal_sound(Dog("旺财"))  # 输出：汪汪汪
+animal_sound(Cat("咪咪"))  # 输出：喵喵喵
+\`\`\`
+
+## 封装
+
+\`\`\`python
+class Person:
+    def __init__(self, name, age):
+        self._name = name  # 私有属性（约定）
+        self.__age = age   # 真正的私有属性
+    
+    # getter方法
+    def get_name(self):
+        return self._name
+    
+    # setter方法
+    def set_name(self, name):
+        self._name = name
+    
+    # 属性装饰器
+    @property
+    def age(self):
+        return self.__age
+    
+    @age.setter
+    def age(self, age):
+        if age >= 0:
+            self.__age = age
+
+person = Person("张三", 25)
+print(person.get_name())
+person.set_name("李四")
+print(person.get_name())
+print(person.age)
+person.age = 30
+print(person.age)
+\`\`\`
+
+## 魔术方法
+
+\`\`\`python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def __str__(self):
+        return f"Person(name='{self.name}', age={self.age})"
+    
+    def __repr__(self):
+        return f"Person('{self.name}', {self.age})"
+    
+    def __eq__(self, other):
+        return self.name == other.name and self.age == other.age
+
+person1 = Person("张三", 25)
+person2 = Person("张三", 25)
+print(str(person1))
+print(repr(person1))
+print(person1 == person2)
+\`\`\``,
+        duration: '3小时',
+        hasPractice: true,
+        hasQuiz: true,
+        quizId: 'quiz-chapter-8'
+      },
+      {
+        id: 'chapter-9',
+        title: '第三方库',
+        description: '学习常用的Python第三方库',
+        content: `# 第三方库
+
+## NumPy
+
+NumPy是Python科学计算的核心库，提供高性能的多维数组对象。
 
 \`\`\`python
 import numpy as np
@@ -128,48 +599,24 @@ import numpy as np
 # 创建数组
 arr = np.array([1, 2, 3, 4, 5])
 print(arr)
-\`\`\`
 
-## 数组运算
+# 数组运算
+arr2 = arr * 2
+print(arr2)
 
-NumPy支持向量化运算，使代码更简洁高效。
-
-\`\`\`python
-# 数组加法
-a = np.array([1, 2, 3])
-b = np.array([4, 5, 6])
-c = a + b
-print(c)  # [5, 7, 9]
-
-# 矩阵乘法
-matrix1 = np.array([[1, 2], [3, 4]])
-matrix2 = np.array([[5, 6], [7, 8]])
-result = np.dot(matrix1, matrix2)
-\`\`\`
-
-## 常用函数
-
-\`\`\`python
 # 统计函数
-arr = np.array([1, 2, 3, 4, 5])
 print(np.mean(arr))  # 平均值
-print(np.std(arr))   # 标准差
 print(np.sum(arr))   # 求和
-\`\`\``,
-        duration: '2.5小时',
-        hasPractice: true,
-        hasQuiz: true,
-        quizId: 'quiz-chapter-2'
-      },
-      {
-        id: 'chapter-3',
-        title: 'Pandas数据处理',
-        description: '学习使用Pandas进行数据清洗和分析',
-        content: `# Pandas数据处理
+print(np.max(arr))   # 最大值
 
-## Pandas简介
+# 多维数组
+matrix = np.array([[1, 2], [3, 4]])
+print(matrix)
+\`\`\`
 
-Pandas是Python数据分析的核心库，提供了DataFrame和Series两种主要数据结构。
+## Pandas
+
+Pandas是数据分析的核心库，提供DataFrame和Series数据结构。
 
 \`\`\`python
 import pandas as pd
@@ -182,762 +629,228 @@ data = {
 }
 df = pd.DataFrame(data)
 print(df)
+
+# 数据操作
+print(df['name'])  # 选择列
+print(df.loc[0])   # 选择行
+print(df[df['age'] > 28])  # 过滤数据
+print(df.groupby('city').mean())  # 分组聚合
 \`\`\`
 
-## 数据选择与过滤
+## Matplotlib
 
-\`\`\`python
-# 选择列
-ages = df['age']
-
-# 选择行
-first_row = df.iloc[0]
-
-# 过滤数据
-young_people = df[df['age'] < 30]
-\`\`\`
-
-## 数据清洗
-
-\`\`\`python
-# 处理缺失值
-df_clean = df.dropna()  # 删除缺失值
-df_filled = df.fillna(0)  # 填充缺失值
-
-# 去重
-df_unique = df.drop_duplicates()
-\`\`\``,
-        duration: '3小时',
-        hasPractice: true,
-        hasQuiz: true,
-        quizId: 'quiz-chapter-3'
-      },
-      {
-        id: 'chapter-4',
-        title: '数据可视化入门',
-        description: '使用Matplotlib和Seaborn创建数据图表',
-        content: `# 数据可视化入门
-
-## Matplotlib基础
-
-Matplotlib是Python最流行的绘图库。
+Matplotlib是数据可视化库，用于创建各种图表。
 
 \`\`\`python
 import matplotlib.pyplot as plt
 import numpy as np
 
-# 创建简单的折线图
+# 创建数据
 x = np.linspace(0, 10, 100)
 y = np.sin(x)
 
+# 创建图表
 plt.plot(x, y)
 plt.title('正弦函数')
 plt.xlabel('x')
 plt.ylabel('sin(x)')
+plt.grid(True)
 plt.show()
 \`\`\`
 
-## Seaborn进阶
+## Requests
 
-Seaborn基于Matplotlib，提供了更美观的统计图表。
-
-\`\`\`python
-import seaborn as sns
-import pandas as pd
-
-# 创建散点图
-data = pd.DataFrame({
-    'x': [1, 2, 3, 4, 5],
-    'y': [2, 4, 5, 4, 6]
-})
-
-sns.scatterplot(data=data, x='x', y='y')
-plt.title('散点图示例')
-plt.show()
-\`\`\``,
-        duration: '2.5小时',
-        hasPractice: true,
-        hasQuiz: true,
-        quizId: 'quiz-chapter-4'
-      },
-      {
-        id: 'chapter-5',
-        title: '实战项目：数据分析案例',
-        description: '综合运用所学知识完成一个完整的数据分析项目',
-        content: `# 实战项目：数据分析案例
-
-## 项目概述
-
-在这个项目中，我们将综合运用前面所学的知识，完成一个完整的数据分析案例。
-
-## 项目步骤
-
-1. 数据收集
-2. 数据清洗
-3. 探索性数据分析
-4. 数据可视化
-5. 结论与报告
-
-## 示例代码
+Requests是HTTP请求库，用于与Web API交互。
 
 \`\`\`python
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+import requests
 
-# 读取数据
-df = pd.read_csv('sales_data.csv')
+# 发送GET请求
+response = requests.get('https://api.github.com/users/octocat')
 
-# 数据预览
-print(df.head())
-print(df.info())
-
-# 数据统计
-print(df.describe())
-
-# 可视化
-plt.figure(figsize=(12, 6))
-sns.histplot(data=df, x='sales', bins=30)
-plt.title('销售分布')
-plt.show()
-\`\`\``,
-        duration: '2小时',
-        hasPractice: true,
-        hasQuiz: false
-      }
-    ]
-  },
-  {
-    id: 'course-2',
-    title: '机器学习入门',
-    description: '学习机器学习的基本概念和常用算法，使用Scikit-learn构建预测模型',
-    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Machine%20learning%20course%20banner%20with%20neural%20networks%20and%20data%20visualization&image_size=landscape_16_9',
-    category: '机器学习',
-    level: 'intermediate',
-    duration: '16小时',
-    tags: ['机器学习', 'Scikit-learn', 'Python', '算法'],
-    comprehensiveQuizId: 'quiz-ml-comp-1',
-    chapters: [
-      {
-        id: 'chapter-ml-1',
-        title: '机器学习概述',
-        description: '了解机器学习的基本概念和应用场景',
-        content: `# 机器学习概述
-
-机器学习是人工智能的一个分支，使计算机能够从数据中学习。
-
-## 主要类型
-
-- 监督学习：使用标记数据训练模型
-- 无监督学习：从无标记数据中发现模式
-- 强化学习：通过与环境交互学习最优策略
-
-## 应用场景
-
-- 图像识别
-- 自然语言处理
-- 推荐系统
-- 金融预测
-- 医疗诊断
-
-## 机器学习工作流程
-
-1. 数据收集
-2. 数据预处理
-3. 特征工程
-4. 模型选择
-5. 模型训练
-6. 模型评估
-7. 模型部署`,
-        duration: '1.5小时',
-        hasPractice: true,
-        hasQuiz: true,
-        quizId: 'quiz-ml-1'
-      },
-      {
-        id: 'chapter-ml-2',
-        title: '线性回归',
-        description: '学习线性回归算法，用于预测连续值',
-        content: `# 线性回归
-
-线性回归是最基础的机器学习算法之一，用于预测连续值。
-
-## 基本原理
-
-线性回归假设输入特征与输出之间存在线性关系：
-
-\( y = w_0 + w_1x_1 + w_2x_2 + ... + w_nx_n + ε \)
-
-## 模型训练
-
-使用最小二乘法最小化预测值与实际值之间的误差。
-
-## 代码示例
-
-\`\`\`python
-from sklearn.linear_model import LinearRegression
-import numpy as np
-
-# 准备数据
-X = np.array([[1], [2], [3], [4], [5]])
-y = np.array([2, 4, 5, 4, 6])
-
-# 创建模型
-model = LinearRegression()
-
-# 训练模型
-model.fit(X, y)
-
-# 预测
-predictions = model.predict([[6]])
-print(predictions)
+# 检查状态码
+if response.status_code == 200:
+    # 解析JSON
+    data = response.json()
+    print(data['name'])
 \`\`\`
 
-## 评估指标
+## BeautifulSoup
 
-- 均方误差 (MSE)
-- 均方根误差 (RMSE)
-- 平均绝对误差 (MAE)
-- R² 评分`,
-        duration: '2小时',
-        hasPractice: true,
-        hasQuiz: true,
-        quizId: 'quiz-ml-2'
-      },
-      {
-        id: 'chapter-ml-3',
-        title: '分类算法',
-        description: '学习逻辑回归、决策树等分类算法',
-        content: `# 分类算法
-
-分类算法用于预测离散类别。
-
-## 逻辑回归
-
-逻辑回归用于二分类问题，输出是概率值。
+BeautifulSoup用于解析HTML和XML文档。
 
 \`\`\`python
-from sklearn.linear_model import LogisticRegression
+from bs4 import BeautifulSoup
+import requests
 
-# 创建模型
-model = LogisticRegression()
+# 获取网页内容
+response = requests.get('https://example.com')
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# 提取元素
+print(soup.title.text)
+print(soup.find('p').text)
 \`\`\`
 
-## 决策树
+## 安装第三方库
 
-决策树通过树状结构进行决策。
-
-\`\`\`python
-from sklearn.tree import DecisionTreeClassifier
-
-# 创建模型
-model = DecisionTreeClassifier()
-\`\`\`
-
-## 随机森林
-
-随机森林是由多个决策树组成的集成学习方法。
-
-\`\`\`python
-from sklearn.ensemble import RandomForestClassifier
-
-# 创建模型
-model = RandomForestClassifier()
-\`\`\`
-
-## 支持向量机
-
-支持向量机通过寻找最优超平面来分离不同类别。
-
-\`\`\`python
-from sklearn.svm import SVC
-
-# 创建模型
-model = SVC()
+\`\`\`bash
+pip install numpy pandas matplotlib requests beautifulsoup4
 \`\`\``,
         duration: '3小时',
         hasPractice: true,
         hasQuiz: true,
-        quizId: 'quiz-ml-3'
+        quizId: 'quiz-chapter-9'
       },
       {
-        id: 'chapter-ml-4',
-        title: '模型评估与优化',
-        description: '学习如何评估和优化机器学习模型',
-        content: `# 模型评估与优化
+        id: 'chapter-10',
+        title: '综合实战',
+        description: '综合运用所学知识完成一个完整的Python项目',
+        content: `# 综合实战
 
-评估模型性能是机器学习的重要环节。
+## 项目：个人待办清单
 
-## 评估指标
+### 功能需求
 
-### 分类模型
-- 准确率 (Accuracy)
-- 精确率 (Precision)
-- 召回率 (Recall)
-- F1分数
-- ROC曲线和AUC
+1. 添加待办事项
+2. 查看所有待办事项
+3. 标记待办事项为已完成
+4. 删除待办事项
+5. 保存待办事项到文件
+6. 从文件加载待办事项
 
-### 回归模型
-- 均方误差 (MSE)
-- 均方根误差 (RMSE)
-- 平均绝对误差 (MAE)
-- R² 评分
+### 项目结构
 
-## 交叉验证
-
-\`\`\`python
-from sklearn.model_selection import cross_val_score
-
-# 5折交叉验证
-scores = cross_val_score(model, X, y, cv=5)
-print(scores.mean())
+\`\`\`
+todo_list/
+├── todo.py        # 主程序
+├── todo_list.py   # 待办清单类
+└── todos.json     # 存储待办事项
 \`\`\`
 
-## 超参数调优
+### 代码实现
 
-### 网格搜索
+**todo_list.py**
+
 \`\`\`python
-from sklearn.model_selection import GridSearchCV
+import json
 
-param_grid = {'n_estimators': [10, 50, 100]}
-grid_search = GridSearchCV(RandomForestClassifier(), param_grid, cv=5)
-grid_search.fit(X, y)
-print(grid_search.best_params())
+class TodoList:
+    def __init__(self, filename='todos.json'):
+        self.filename = filename
+        self.todos = self.load_todos()
+    
+    def load_todos(self):
+        try:
+            with open(self.filename, 'r', encoding='utf-8') as file:
+                return json.load(file)
+        except FileNotFoundError:
+            return []
+    
+    def save_todos(self):
+        with open(self.filename, 'w', encoding='utf-8') as file:
+            json.dump(self.todos, file, ensure_ascii=False, indent=2)
+    
+    def add_todo(self, task):
+        todo = {
+            'id': len(self.todos) + 1,
+            'task': task,
+            'completed': False,
+            'created_at': '2024-01-01 12:00:00'
+        }
+        self.todos.append(todo)
+        self.save_todos()
+        return todo
+    
+    def get_todos(self):
+        return self.todos
+    
+    def mark_completed(self, todo_id):
+        for todo in self.todos:
+            if todo['id'] == todo_id:
+                todo['completed'] = True
+                self.save_todos()
+                return True
+        return False
+    
+    def delete_todo(self, todo_id):
+        for i, todo in enumerate(self.todos):
+            if todo['id'] == todo_id:
+                del self.todos[i]
+                self.save_todos()
+                return True
+        return False
 \`\`\`
 
-## 过拟合和欠拟合
-
-- 过拟合：模型在训练数据上表现好，但在测试数据上表现差
-- 欠拟合：模型在训练数据和测试数据上表现都差
-
-## 防止过拟合的方法
-
-- 增加数据量
-- 特征选择
-- 正则化
-- 集成学习`,
-        duration: '2.5小时',
-        hasPractice: true,
-        hasQuiz: true,
-        quizId: 'quiz-ml-4'
-      },
-      {
-        id: 'chapter-ml-5',
-        title: '实战项目：房价预测',
-        description: '使用机器学习预测房价',
-        content: `# 实战项目：房价预测
-
-综合运用所学知识完成房价预测项目。
-
-## 项目步骤
-
-1. 数据收集与探索
-2. 数据预处理
-3. 特征工程
-4. 模型选择与训练
-5. 模型评估与优化
-6. 结果分析
-
-## 数据加载
+**todo.py**
 
 \`\`\`python
-import pandas as pd
+from todo_list import TodoList
 
-# 加载数据
-df = pd.read_csv('housing.csv')
+def main():
+    todo_list = TodoList()
+    
+    while True:
+        print("\n===== 待办清单 =====")
+        print("1. 添加待办事项")
+        print("2. 查看所有待办事项")
+        print("3. 标记待办事项为已完成")
+        print("4. 删除待办事项")
+        print("5. 退出")
+        
+        choice = input("请选择操作：")
+        
+        if choice == '1':
+            task = input("请输入待办事项：")
+            todo = todo_list.add_todo(task)
+            print(f"已添加待办事项：{todo['task']}")
+        elif choice == '2':
+            todos = todo_list.get_todos()
+            if not todos:
+                print("暂无待办事项")
+            else:
+                for todo in todos:
+                    status = "✓" if todo['completed'] else "✗"
+                    print(f"{todo['id']}. [{status}] {todo['task']}")
+        elif choice == '3':
+            todo_id = int(input("请输入待办事项ID："))
+            if todo_list.mark_completed(todo_id):
+                print("已标记为已完成")
+            else:
+                print("待办事项不存在")
+        elif choice == '4':
+            todo_id = int(input("请输入待办事项ID："))
+            if todo_list.delete_todo(todo_id):
+                print("已删除待办事项")
+            else:
+                print("待办事项不存在")
+        elif choice == '5':
+            print("再见！")
+            break
+        else:
+            print("无效的选择，请重新输入")
 
-# 数据预览
-print(df.head())
-print(df.info())
+if __name__ == "__main__":
+    main()
 \`\`\`
 
-## 特征工程
+### 运行项目
 
-\`\`\`python
-# 处理缺失值
-df = df.dropna()
-
-# 特征选择
-X = df[['area', 'bedrooms', 'bathrooms', 'age']]
-y = df['price']
+\`\`\`bash
+python todo.py
 \`\`\`
 
-## 模型训练
+## 项目扩展
 
-\`\`\`python
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-
-# 划分训练集和测试集
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# 训练模型
-model = LinearRegression()
-model.fit(X_train, y_train)
-
-# 预测
-predictions = model.predict(X_test)
-\`\`\`
-
-## 模型评估
-
-\`\`\`python
-from sklearn.metrics import mean_squared_error, r2_score
-
-# 计算MSE
-mse = mean_squared_error(y_test, predictions)
-print(f'MSE: {mse}')
-
-# 计算R²
-r2 = r2_score(y_test, predictions)
-print(f'R²: {r2}')
+1. 添加GUI界面（使用tkinter）
+2. 添加优先级和截止日期
+3. 添加分类功能
+4. 添加提醒功能
+5. 同步到云端存储
 \`\`\``,
-        duration: '3小时',
+        duration: '2小时',
         hasPractice: true,
         hasQuiz: false
-      }
-    ]
-  },
-  {
-    id: 'course-3',
-    title: 'SQL数据库基础',
-    description: '学习SQL数据库的基本概念和操作，掌握数据查询、修改和管理的核心技能',
-    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=SQL%20database%20course%20banner%20with%20tables%20and%20queries&image_size=landscape_16_9',
-    category: '数据库',
-    level: 'beginner',
-    duration: '10小时',
-    tags: ['SQL', '数据库', '数据查询', '数据管理'],
-    comprehensiveQuizId: 'quiz-sql-comp-1',
-    chapters: [
-      {
-        id: 'chapter-sql-1',
-        title: 'SQL基础概念',
-        description: '了解SQL的基本概念和数据库的基本结构',
-        content: `# SQL基础概念
-
-SQL（Structured Query Language）是一种用于管理关系型数据库的标准语言。
-
-## 数据库基本概念
-
-- **数据库（Database）**：存储数据的容器
-- **表（Table）**：数据的结构化集合
-- **行（Row）**：表中的一条记录
-- **列（Column）**：表中的一个字段
-- **主键（Primary Key）**：唯一标识表中每一行的字段
-- **外键（Foreign Key）**：用于关联不同表的字段
-
-## SQL的主要类型
-
-- **DDL（Data Definition Language）**：定义数据结构
-  - CREATE, ALTER, DROP
-- **DML（Data Manipulation Language）**：操作数据
-  - INSERT, UPDATE, DELETE
-- **DQL（Data Query Language）**：查询数据
-  - SELECT
-- **DCL（Data Control Language）**：控制访问权限
-  - GRANT, REVOKE
-
-## 常用数据库系统
-
-- MySQL
-- PostgreSQL
-- SQLite
-- Oracle
-- Microsoft SQL Server
-
-## 基本SQL语法
-
-SQL语句不区分大小写，但通常关键字使用大写，表名和列名使用小写。
-
-\`\`\`sql
--- 注释
-SELECT column1, column2
-FROM table_name
-WHERE condition;
-\`\`\``,
-        duration: '1.5小时',
-        hasPractice: true,
-        hasQuiz: true,
-        quizId: 'quiz-sql-1'
-      },
-      {
-        id: 'chapter-sql-2',
-        title: 'SELECT语句',
-        description: '学习使用SELECT语句查询数据',
-        content: `# SELECT语句
-
-SELECT语句用于从数据库表中查询数据。
-
-## 基本语法
-
-\`\`\`sql
-SELECT column1, column2, ...
-FROM table_name;
-\`\`\`
-
-## 查询所有列
-
-\`\`\`sql
-SELECT * FROM table_name;
-\`\`\`
-
-## 带条件的查询
-
-\`\`\`sql
-SELECT column1, column2
-FROM table_name
-WHERE condition;
-\`\`\`
-
-## 常见条件运算符
-
-- = 等于
-- <> 不等于
-- > 大于
-- < 小于
-- >= 大于等于
-- <= 小于等于
-- BETWEEN 在某个范围内
-- LIKE 模糊匹配
-- IN 在集合中
-
-## 排序结果
-
-\`\`\`sql
-SELECT column1, column2
-FROM table_name
-ORDER BY column1 ASC, column2 DESC;
-\`\`\`
-
-## 限制结果数量
-
-\`\`\`sql
--- MySQL
-SELECT column1, column2
-FROM table_name
-LIMIT 10;
-
--- SQL Server
-SELECT TOP 10 column1, column2
-FROM table_name;
-\`\`\`
-
-## 示例
-
-\`\`\`sql
--- 查询所有员工
-SELECT * FROM employees;
-
--- 查询特定列
-SELECT first_name, last_name, salary
-FROM employees;
-
--- 带条件查询
-SELECT * FROM employees
-WHERE salary > 5000;
-
--- 排序
-SELECT * FROM employees
-ORDER BY salary DESC;
-\`\`\``,
-        duration: '2小时',
-        hasPractice: true,
-        hasQuiz: true,
-        quizId: 'quiz-sql-2'
-      },
-      {
-        id: 'chapter-sql-3',
-        title: '数据修改语句',
-        description: '学习使用INSERT、UPDATE和DELETE语句修改数据',
-        content: `# 数据修改语句
-
-## INSERT语句
-
-用于向表中插入新记录。
-
-\`\`\`sql
--- 插入完整记录
-INSERT INTO table_name (column1, column2, column3)
-VALUES (value1, value2, value3);
-
--- 插入多条记录
-INSERT INTO table_name (column1, column2, column3)
-VALUES 
-  (value1, value2, value3),
-  (value4, value5, value6),
-  (value7, value8, value9);
-\`\`\`
-
-## UPDATE语句
-
-用于更新表中的记录。
-
-\`\`\`sql
-UPDATE table_name
-SET column1 = value1, column2 = value2
-WHERE condition;
-\`\`\`
-
-## DELETE语句
-
-用于删除表中的记录。
-
-\`\`\`sql
-DELETE FROM table_name
-WHERE condition;
-\`\`\`
-
-## 示例
-
-\`\`\`sql
--- 插入新员工
-INSERT INTO employees (first_name, last_name, salary, department_id)
-VALUES ('John', 'Doe', 6000, 1);
-
--- 更新员工薪资
-UPDATE employees
-SET salary = salary * 1.1
-WHERE department_id = 1;
-
--- 删除员工
-DELETE FROM employees
-WHERE employee_id = 101;
-\`\`\``,
-        duration: '1.5小时',
-        hasPractice: true,
-        hasQuiz: true,
-        quizId: 'quiz-sql-3'
-      },
-      {
-        id: 'chapter-sql-4',
-        title: '表连接',
-        description: '学习使用JOIN语句连接多个表',
-        content: `# 表连接
-
-JOIN用于在查询中连接多个表。
-
-## 内连接（INNER JOIN）
-
-返回两个表中匹配的记录。
-
-\`\`\`sql
-SELECT column1, column2
-FROM table1
-INNER JOIN table2
-ON table1.column = table2.column;
-\`\`\`
-
-## 左连接（LEFT JOIN）
-
-返回左表的所有记录和右表中匹配的记录。
-
-\`\`\`sql
-SELECT column1, column2
-FROM table1
-LEFT JOIN table2
-ON table1.column = table2.column;
-\`\`\`
-
-## 右连接（RIGHT JOIN）
-
-返回右表的所有记录和左表中匹配的记录。
-
-\`\`\`sql
-SELECT column1, column2
-FROM table1
-RIGHT JOIN table2
-ON table1.column = table2.column;
-\`\`\`
-
-## 全连接（FULL JOIN）
-
-返回两个表中的所有记录。
-
-\`\`\`sql
-SELECT column1, column2
-FROM table1
-FULL JOIN table2
-ON table1.column = table2.column;
-\`\`\`
-
-## 示例
-
-\`\`\`sql
--- 内连接：查询员工及其所属部门
-SELECT e.first_name, e.last_name, d.department_name
-FROM employees e
-INNER JOIN departments d
-ON e.department_id = d.department_id;
-
--- 左连接：查询所有员工，包括没有部门的员工
-SELECT e.first_name, e.last_name, d.department_name
-FROM employees e
-LEFT JOIN departments d
-ON e.department_id = d.department_id;
-\`\`\``,
-        duration: '2小时',
-        hasPractice: true,
-        hasQuiz: true,
-        quizId: 'quiz-sql-4'
-      },
-      {
-        id: 'chapter-sql-5',
-        title: '聚合函数和分组',
-        description: '学习使用聚合函数和GROUP BY语句',
-        content: `# 聚合函数和分组
-
-## 常用聚合函数
-
-- **COUNT()**：计数
-- **SUM()**：求和
-- **AVG()**：平均值
-- **MAX()**：最大值
-- **MIN()**：最小值
-
-## GROUP BY语句
-
-用于按一个或多个列对结果集进行分组。
-
-\`\`\`sql
-SELECT column1, COUNT(*)
-FROM table_name
-GROUP BY column1;
-\`\`\`
-
-## HAVING子句
-
-用于过滤分组后的结果。
-
-\`\`\`sql
-SELECT column1, COUNT(*)
-FROM table_name
-GROUP BY column1
-HAVING COUNT(*) > 5;
-\`\`\`
-
-## 示例
-
-\`\`\`sql
--- 计算每个部门的员工数量
-SELECT department_id, COUNT(*) as employee_count
-FROM employees
-GROUP BY department_id;
-
--- 计算每个部门的平均薪资
-SELECT department_id, AVG(salary) as avg_salary
-FROM employees
-GROUP BY department_id;
-
--- 查找员工数量大于5的部门
-SELECT department_id, COUNT(*) as employee_count
-FROM employees
-GROUP BY department_id
-HAVING COUNT(*) > 5;
-\`\`\``,
-        duration: '2小时',
-        hasPractice: true,
-        hasQuiz: true,
-        quizId: 'quiz-sql-5'
       }
     ]
   }

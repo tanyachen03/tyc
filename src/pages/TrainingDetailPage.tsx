@@ -170,9 +170,9 @@ export function TrainingDetailPage() {
       </div>
 
       <div className="container-custom py-6">
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid lg:grid-cols-12 gap-6">
           {/* 左侧面板 */}
-          <div className="lg:col-span-1 space-y-6">
+          <div className="lg:col-span-3 space-y-6">
             {/* 标签页 */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
               <div className="flex border-b border-gray-100">
@@ -260,8 +260,8 @@ export function TrainingDetailPage() {
             </div>
           </div>
 
-          {/* 右侧代码和输出区域 */}
-          <div className="lg:col-span-2 space-y-6">
+          {/* 中间代码编辑区域 */}
+          <div className="lg:col-span-5 space-y-6">
             {/* 代码编辑器 */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
               <div className="bg-gray-900 px-4 py-2 flex items-center gap-2">
@@ -308,6 +308,34 @@ export function TrainingDetailPage() {
               </div>
               <div className="h-48 p-4 bg-gray-900 overflow-auto">
                 <pre className="text-sm text-green-400 font-mono whitespace-pre-wrap">{output || '运行代码后，结果将显示在这里...'}</pre>
+              </div>
+            </div>
+          </div>
+
+          {/* 右侧示例代码/参考思路区域 */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+                <h3 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
+                  <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  参考思路
+                </h3>
+                <button
+                  onClick={() => {
+                    // 复制示例代码到剪贴板
+                    navigator.clipboard.writeText(project.starterCode)
+                      .then(() => setOutput(prev => prev + '\n✅ 示例代码已复制到剪贴板！'))
+                      .catch(err => console.error('复制失败:', err));
+                  }}
+                  className="text-xs text-blue-600 hover:text-blue-800 font-semibold"
+                >
+                  复制代码
+                </button>
+              </div>
+              <div className="h-[500px] p-4 bg-gray-900 overflow-auto">
+                <pre className="text-sm text-gray-300 font-mono whitespace-pre-wrap">{project.starterCode}</pre>
               </div>
             </div>
           </div>

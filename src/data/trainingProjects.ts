@@ -13,6 +13,79 @@ export interface TrainingProject {
 export const trainingProjects: TrainingProject[] = [
   {
     id: "training-1",
+    title: "个人计算器",
+    description: "开发一个命令行版本的简易计算器，支持基本的算术运算。",
+    difficulty: "初级",
+    stars: 1,
+    learningObjectives: [
+      "基本输入输出操作",
+      "算术运算符的使用",
+      "条件判断和循环结构",
+      "异常处理"
+    ],
+    coreFeatures: [
+      "支持加减乘除四则运算",
+      "支持连续计算",
+      "错误处理（如除零错误）",
+      "友好的用户界面"
+    ],
+    extensionChallenges: [
+      "添加科学计算功能（平方根、幂运算等）",
+      "添加括号支持",
+      "实现图形界面（使用tkinter）"
+    ],
+    starterCode: `# 个人计算器项目
+# 在这里开始编写你的代码
+
+print("欢迎使用个人计算器！")
+print("输入 'exit' 退出程序")
+
+while True:
+    # 你的代码
+    pass
+`
+  },
+  {
+    id: "training-2",
+    title: "猜数字游戏",
+    description: "开发一个猜数字游戏，程序随机生成一个数字，用户来猜。",
+    difficulty: "初级",
+    stars: 1,
+    learningObjectives: [
+      "随机数生成",
+      "用户输入处理",
+      "条件判断",
+      "循环控制"
+    ],
+    coreFeatures: [
+      "随机生成1-100之间的数字",
+      "提示用户输入猜测的数字",
+      "根据猜测给出提示（大了/小了）",
+      "记录猜测次数",
+      "游戏结束后询问是否再玩"
+    ],
+    extensionChallenges: [
+      "添加难度级别（不同范围的数字）",
+      "记录历史最高分数（最少猜测次数）",
+      "添加图形界面"
+    ],
+    starterCode: `# 猜数字游戏
+# 在这里开始编写你的代码
+
+import random
+
+print("欢迎来到猜数字游戏！")
+print("我已经想好了一个1-100之间的数字，快来猜一猜吧！")
+
+# 生成随机数
+target = random.randint(1, 100)
+guess_count = 0
+
+# 你的代码
+`
+  },
+  {
+    id: "training-3",
     title: "个人记账本",
     description: "开发一个命令行版本的简易记账本，帮助用户记录日常收支。",
     difficulty: "初级",
@@ -20,7 +93,8 @@ export const trainingProjects: TrainingProject[] = [
     learningObjectives: [
       "文件读写操作（txt或csv格式）",
       "日期时间处理（datetime模块）",
-      "列表和字典的数据组织"
+      "列表和字典的数据组织",
+      "基本数据统计"
     ],
     coreFeatures: [
       "添加收支记录（金额、类别、备注、日期）",
@@ -30,7 +104,8 @@ export const trainingProjects: TrainingProject[] = [
     ],
     extensionChallenges: [
       "添加数据可视化（matplotlib绘制饼图）",
-      "支持导出Excel报表"
+      "支持导出Excel报表",
+      "添加图形界面"
     ],
     starterCode: `# 个人记账本项目
 # 在这里开始编写你的代码
@@ -45,380 +120,250 @@ print("欢迎使用个人记账本！")
 `
   },
   {
-    id: "training-2",
-    title: "单词背诵助手",
-    description: "基于艾宾浩斯遗忘曲线的单词背诵工具，帮助用户有计划地复习单词。",
+    id: "training-4",
+    title: "文本词频统计",
+    description: "开发一个程序，统计文本文件中单词出现的频率。",
     difficulty: "初级",
     stars: 2,
     learningObjectives: [
-      "随机数生成与随机抽取",
-      "文件存储单词库",
-      "时间计算与判断"
+      "文件读写操作",
+      "字符串处理",
+      "字典的使用",
+      "排序算法"
     ],
     coreFeatures: [
-      "从单词库随机抽词测试",
-      "根据用户自评结果安排复习时间",
-      "记录每个单词的掌握程度",
-      "每日推送待复习单词列表"
+      "读取文本文件",
+      "统计每个单词出现的次数",
+      "按频率排序并显示",
+      "支持指定文件路径"
     ],
     extensionChallenges: [
-      "使用SQLite数据库替代文件存储",
-      "添加多用户支持"
+      "添加停用词过滤功能",
+      "支持中文文本分析",
+      "生成词云图（使用wordcloud库）"
     ],
-    starterCode: `# 单词背诵助手项目
+    starterCode: `# 文本词频统计
 # 在这里开始编写你的代码
 
-import random
-import json
-from datetime import datetime, timedelta
+import string
 
-# 艾宾浩斯遗忘曲线复习间隔（天）
-REVIEW_INTERVALS = [1, 2, 4, 7, 15, 30]
+print("文本词频统计工具")
+print("请输入要分析的文本文件路径：")
 
-print("欢迎使用单词背诵助手！")
-`
-  },
-  {
-    id: "training-3",
-    title: "Markdown 转 HTML 转换器",
-    description: "实现一个简易的 Markdown 解析器，将 .md 文件转换为 .html 网页。",
-    difficulty: "中级",
-    stars: 3,
-    learningObjectives: [
-      "正则表达式深入应用",
-      "字符串处理与替换",
-      "文件读写与模板生成"
-    ],
-    coreFeatures: [
-      "解析标题（# ## ###）",
-      "解析粗体、斜体、代码块",
-      "解析无序列表和有序列表",
-      "解析链接和图片",
-      "生成带基础样式的HTML"
-    ],
-    extensionChallenges: [
-      "支持表格语法",
-      "添加代码高亮"
-    ],
-    starterCode: `# Markdown 转 HTML 转换器
-# 在这里开始编写你的代码
-
-import re
-
-HTML_TEMPLATE = '''
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Markdown Document</title>
-    <style>
-        body {{ font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }}
-    </style>
-</head>
-<body>
-{{content}}
-</body>
-</html>
-'''
-
-def parse_markdown(text):
-    """解析 Markdown 文本为 HTML"""
-    # 你的解析逻辑
-    return text
-
-print("欢迎使用 Markdown 转 HTML 转换器！")
-`
-  },
-  {
-    id: "training-4",
-    title: "命令行天气查询工具",
-    description: "调用公开天气API，实现终端下的天气查询功能。",
-    difficulty: "中级",
-    stars: 3,
-    learningObjectives: [
-      "requests库发送HTTP请求",
-      "JSON数据解析",
-      "API调用与异常处理",
-      "命令行参数解析（argparse）"
-    ],
-    coreFeatures: [
-      "根据城市名查询实时天气",
-      "显示温度、湿度、风力、天气状况",
-      "查询未来3天天气预报",
-      "支持保存常用城市"
-    ],
-    extensionChallenges: [
-      "添加彩色终端输出（colorama）",
-      "缓存查询结果减少API调用"
-    ],
-    starterCode: `# 命令行天气查询工具
-# 在这里开始编写你的代码
-
-import requests
-import json
-import argparse
-
-# 你需要去申请一个免费的天气API
-# 推荐：OpenWeatherMap、和风天气等
-API_KEY = "YOUR_API_KEY_HERE"
-BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
-
-print("欢迎使用天气查询工具！")
+# 你的代码
 `
   },
   {
     id: "training-5",
-    title: "简易版学生管理系统",
-    description: "面向培训机构的学生信息管理系统，支持增删改查和成绩管理。",
+    title: "批量文件重命名",
+    description: "开发一个程序，批量重命名指定目录下的文件。",
     difficulty: "中级",
-    stars: 3,
+    stars: 2,
     learningObjectives: [
-      "面向对象编程（类与对象设计）",
-      "CRUD操作实践",
-      "数据持久化"
+      "文件系统操作（os模块）",
+      "路径处理（pathlib模块）",
+      "正则表达式应用",
+      "批量处理逻辑"
     ],
     coreFeatures: [
-      "学生信息管理（姓名、学号、班级、电话）",
-      "课程成绩录入与修改",
-      "按条件查询和排序",
-      "导出成绩单"
+      "指定目录路径",
+      "支持自定义命名规则",
+      "预览重命名结果",
+      "执行重命名操作"
     ],
     extensionChallenges: [
-      "使用SQLite数据库",
-      "添加图形界面（tkinter）"
+      "支持按文件类型过滤",
+      "支持批量添加前缀/后缀",
+      "支持文件排序后重命名"
     ],
-    starterCode: `# 简易版学生管理系统
+    starterCode: `# 批量文件重命名
 # 在这里开始编写你的代码
 
-class Student:
-    def __init__(self, name, student_id, class_name, phone):
-        self.name = name
-        self.student_id = student_id
-        self.class_name = class_name
-        self.phone = phone
-        self.grades = {}  # {course_name: score}
+import os
+from pathlib import Path
 
-class StudentManager:
-    def __init__(self):
-        self.students = {}  # {student_id: Student}
-    
-    def add_student(self, student):
-        self.students[student.student_id] = student
+print("批量文件重命名工具")
+print("请输入要处理的目录路径：")
 
-print("欢迎使用学生管理系统！")
+# 你的代码
 `
   },
   {
     id: "training-6",
-    title: "网页内容监控器",
-    description: "定时监控指定网页内容变化，发现更新时发送通知。",
+    title: "爬虫获取网页信息",
+    description: "开发一个简单的网页爬虫，获取指定网页的信息。",
     difficulty: "中级",
     stars: 3,
     learningObjectives: [
-      "requests + BeautifulSoup 网页抓取",
-      "定时任务（schedule库）",
-      "哈希值计算判断内容变化",
-      "邮件/桌面通知发送"
+      "requests库发送HTTP请求",
+      "BeautifulSoup解析HTML",
+      "数据提取和处理",
+      "异常处理"
     ],
     coreFeatures: [
-      "用户添加监控URL和关键词",
-      "定时抓取网页内容",
-      "对比内容变化并记录",
-      "变化时发送邮件提醒"
+      "指定URL爬取网页",
+      "提取网页标题、段落等信息",
+      "保存提取的信息到文件",
+      "简单的反爬措施"
     ],
     extensionChallenges: [
-      "支持登录态抓取",
-      "支持多线程并发监控"
+      "支持多页面爬取",
+      "支持图片下载",
+      "添加数据存储到数据库"
     ],
-    starterCode: `# 网页内容监控器
+    starterCode: `# 爬虫获取网页信息
 # 在这里开始编写你的代码
 
 import requests
 from bs4 import BeautifulSoup
-import hashlib
-import time
 
-def get_content_hash(url):
-    """获取网页内容的哈希值"""
-    try:
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
-        return hashlib.md5(response.content).hexdigest()
-    except Exception as e:
-        return None
+print("网页爬虫工具")
+print("请输入要爬取的URL：")
 
-print("欢迎使用网页内容监控器！")
+# 你的代码
 `
   },
   {
     id: "training-7",
-    title: "个人博客系统（Flask）",
-    description: "使用 Flask 框架搭建一个轻量级个人博客网站。",
-    difficulty: "进阶",
-    stars: 4,
+    title: "数据可视化图表",
+    description: "使用matplotlib库创建各种数据可视化图表。",
+    difficulty: "中级",
+    stars: 3,
     learningObjectives: [
-      "Flask Web框架基础",
-      "Jinja2模板引擎",
-      "路由设计与前后端交互",
-      "Markdown内容渲染"
+      "matplotlib库的使用",
+      "数据处理和准备",
+      "图表类型选择",
+      "图表美化"
     ],
     coreFeatures: [
-      "文章发布与编辑",
-      "文章列表与详情页",
-      "按分类/标签筛选",
-      "简单评论功能",
-      "管理员登录后台"
+      "创建折线图、柱状图、饼图等基本图表",
+      "添加标题、标签和图例",
+      "自定义图表样式",
+      "保存图表为图片"
     ],
     extensionChallenges: [
-      "部署到云服务器",
-      "添加全文搜索"
+      "添加交互式图表（使用plotly）",
+      "支持从CSV文件读取数据",
+      "创建复合图表"
     ],
-    starterCode: `# 个人博客系统（Flask）
+    starterCode: `# 数据可视化图表
 # 在这里开始编写你的代码
 
-from flask import Flask, render_template, request, redirect, url_for, flash
-from datetime import datetime
+import matplotlib.pyplot as plt
+import numpy as np
 
-app = Flask(__name__)
-app.secret_key = 'your-secret-key-here'
+print("数据可视化工具")
 
-# 临时存储文章
-posts = []
-
-@app.route('/')
-def index():
-    return render_template('index.html', posts=posts)
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-print("欢迎使用个人博客系统！")
+# 你的代码
 `
   },
   {
     id: "training-8",
-    title: "批量图片处理工具",
-    description: "用Pillow库实现批量图片处理，适合摄影师或电商从业者。",
+    title: "学生成绩管理系统",
+    description: "开发一个学生成绩管理系统，支持成绩的录入、查询和统计。",
     difficulty: "中级",
     stars: 3,
     learningObjectives: [
-      "Pillow图像处理库",
-      "文件批量操作",
-      "多线程加速处理"
+      "面向对象编程",
+      "数据结构设计",
+      "文件存储",
+      "数据统计和分析"
     ],
     coreFeatures: [
-      "批量调整尺寸/压缩",
-      "添加水印（文字或图片）",
-      "格式转换（jpg/png/webp）",
-      "保持原始文件夹结构输出"
+      "学生信息管理（姓名、学号、班级）",
+      "课程成绩录入和修改",
+      "成绩查询（按学生、按课程）",
+      "成绩统计（平均分、排名等）",
+      "数据保存和加载"
     ],
     extensionChallenges: [
-      "添加GUI界面",
-      "支持AI抠图（rembg库）"
+      "添加图形界面（使用tkinter）",
+      "支持Excel导入导出",
+      "添加数据可视化统计"
     ],
-    starterCode: `# 批量图片处理工具
+    starterCode: `# 学生成绩管理系统
 # 在这里开始编写你的代码
 
-from PIL import Image, ImageDraw, ImageFont
-import os
-from pathlib import Path
+class Student:
+    def __init__(self, name, student_id, class_name):
+        self.name = name
+        self.student_id = student_id
+        self.class_name = class_name
+        self.grades = {}  # {course_name: score}
 
-def resize_image(input_path, output_path, width, height):
-    """调整图片尺寸"""
-    img = Image.open(input_path)
-    img = img.resize((width, height), Image.Resampling.LANCZOS)
-    img.save(output_path)
+class GradeManager:
+    def __init__(self):
+        self.students = {}
 
-print("欢迎使用批量图片处理工具！")
+print("欢迎使用学生成绩管理系统！")
 `
   },
   {
     id: "training-9",
-    title: "命令行贪吃蛇游戏",
-    description: "在终端中运行的贪吃蛇游戏，使用键盘控制方向。",
-    difficulty: "初级",
-    stars: 2,
+    title: "简易待办清单（本地存储）",
+    description: "开发一个简易的待办清单应用，支持本地存储功能。",
+    difficulty: "中级",
+    stars: 3,
     learningObjectives: [
-      "curses库终端图形绘制",
-      "键盘监听与响应",
-      "游戏循环与状态管理",
-      "碰撞检测逻辑"
+      "文件读写操作",
+      "JSON数据处理",
+      "用户交互设计",
+      "数据持久化"
     ],
     coreFeatures: [
-      "蛇的移动与控制（WASD或方向键）",
-      "食物随机生成",
-      "得分与等级（速度递增）",
-      "撞墙/撞身体游戏结束"
+      "添加待办事项",
+      "标记待办事项为已完成",
+      "删除待办事项",
+      "查看所有待办事项",
+      "自动保存到本地文件"
     ],
     extensionChallenges: [
-      "添加障碍物模式",
-      "保存最高分记录"
+      "添加待办事项优先级",
+      "添加截止日期",
+      "添加搜索和过滤功能"
     ],
-    starterCode: `# 命令行贪吃蛇游戏
+    starterCode: `# 简易待办清单
 # 在这里开始编写你的代码
 
-import random
-import time
-import sys
+import json
+import os
 
-# 注意：Windows下可能需要安装 windows-curses 库
-# pip install windows-curses
+print("欢迎使用待办清单！")
 
-print("欢迎使用命令行贪吃蛇游戏！")
-print("提示：在真正的终端中运行，需要使用 curses 库")
+# 你的代码
 `
   },
   {
     id: "training-10",
-    title: "RESTful API 服务开发",
-    description: "使用 FastAPI 开发一个符合 RESTful 规范的图书管理 API。",
+    title: "综合实战项目（自选主题完整小工具）",
+    description: "根据所学知识，开发一个完整的小工具，可以选择自己感兴趣的主题。",
     difficulty: "进阶",
     stars: 4,
     learningObjectives: [
-      "FastAPI 框架使用",
-      "RESTful API 设计原则",
-      "Pydantic 数据验证",
-      "Swagger 自动文档生成",
-      "JWT 身份认证"
+      "综合运用所学知识",
+      "项目规划和设计",
+      "代码组织和模块化",
+      "用户体验优化"
     ],
     coreFeatures: [
-      "图书的增删改查接口",
-      "用户注册与登录（JWT认证）",
-      "图书借阅/归还功能",
-      "分页查询与模糊搜索",
-      "接口限流保护"
+      "功能完整的小工具",
+      "良好的用户界面",
+      "错误处理和异常捕获",
+      "详细的注释和文档"
     ],
     extensionChallenges: [
-      "使用异步数据库操作（asyncpg）",
-      "Docker 容器化部署"
+      "添加更多功能扩展",
+      "优化性能",
+      "部署到网络或打包为可执行文件"
     ],
-    starterCode: `# RESTful API 服务开发（FastAPI）
+    starterCode: `# 综合实战项目
 # 在这里开始编写你的代码
 
-from fastapi import FastAPI, HTTPException, Depends, status
-from pydantic import BaseModel
-from typing import List, Optional
-from datetime import datetime
+print("综合实战项目")
+print("请选择一个你感兴趣的主题，开发一个完整的小工具。")
+print("例如：天气查询工具、密码生成器、文件加密工具等")
 
-app = FastAPI(title="图书管理 API", version="1.0.0")
-
-# 数据模型
-class Book(BaseModel):
-    id: Optional[int] = None
-    title: str
-    author: str
-    isbn: str
-    available: bool = True
-
-# 临时存储
-books_db = []
-
-@app.get("/books", response_model=List[Book])
-def get_books():
-    return books_db
-
-print("欢迎使用图书管理 API！")
-print("运行：uvicorn filename:app --reload")
+# 你的代码
 `
   }
 ];

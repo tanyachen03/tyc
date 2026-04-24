@@ -138,6 +138,57 @@ export function ChapterPage() {
                 </div>
               </div>
 
+              {/* 视频教程 */}
+              <div className="mb-8">
+                <h3 className="text-xl font-semibold text-background-900 mb-4">视频教程</h3>
+                <div className="bg-background-900 rounded-xl overflow-hidden">
+                  <div className="aspect-video relative">
+                    {/* 这里可以嵌入视频播放器，暂时使用占位符 */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-white p-8">
+                        <svg className="w-16 h-16 mx-auto mb-4 text-white opacity-80" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                        </svg>
+                        <p className="text-lg font-medium">配套教学视频</p>
+                        <p className="text-sm opacity-75 mt-2">点击播放视频教程</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-4 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <button className="text-white hover:text-gray-300 transition-colors">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </button>
+                      <button className="text-white hover:text-gray-300 transition-colors">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </button>
+                      <div className="text-white text-sm">0:00 / 10:00</div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <select className="bg-gray-800 text-white text-sm rounded px-2 py-1">
+                        <option>0.5x</option>
+                        <option>0.75x</option>
+                        <option selected>1x</option>
+                        <option>1.25x</option>
+                        <option>1.5x</option>
+                        <option>2x</option>
+                      </select>
+                      <button className="text-white hover:text-gray-300 transition-colors">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div 
                 className="prose max-w-none text-background-700 leading-relaxed"
                 dangerouslySetInnerHTML={{ 

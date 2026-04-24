@@ -80,13 +80,20 @@ router.get(
         return;
       }
 
-      res.status(200).json({
-        success: true,
-        data: {
-          ...post,
-          comments,
-        },
-      });
+      if (typeof post === 'object' && post !== null) {
+        res.status(200).json({
+          success: true,
+          data: {
+            ...(post as Record<string, unknown>),
+            comments,
+          },
+        });
+      } else {
+        res.status(404).json({
+          success: false,
+          error: '帖子不存在',
+        });
+      }
     } catch (error) {
       res.status(500).json({
         success: false,

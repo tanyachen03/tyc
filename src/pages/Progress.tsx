@@ -125,7 +125,7 @@ const Progress: React.FC = () => {
         <div className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-lg font-medium text-gray-900 mb-4">详细进度</h3>
           
-          {Object.entries(progressByType).map(([type, items]) => (
+          {Object.entries(progressByType).map(([type, items]: [string, any[]]) => (
             <div key={type} className="mb-6">
               <h4 className="text-md font-semibold text-gray-700 mb-3">
                 {type === 'course' ? '课程' : type === 'exercise' ? '练习' : '项目'}

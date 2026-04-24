@@ -3,7 +3,266 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
+// 模拟数据，用于演示
+let mockProgressData: any[] = [];
+let mockPostsData: any[] = [];
+let mockCommentsData: any[] = [];
+let mockAchievementsData: any[] = [];
+let mockUserAchievementsData: any[] = [];
+
+// 创建客户端
+let supabaseAdminInstance: any;
+
+if (supabaseUrl && supabaseServiceKey) {
+  supabaseAdminInstance = createClient(supabaseUrl, supabaseServiceKey);
+} else {
+  // 创建模拟客户端
+  supabaseAdminInstance = {
+    from: (table: string) => {
+      return {
+        select: (fields: string) => {
+          return {
+            eq: (field: string, value: any) => {
+              return {
+                order: (field: string, options: any) => {
+                  return {
+                    single: () => {
+                      return Promise.resolve({ data: null, error: null });
+                    },
+                    then: (callback: any) => {
+                      let data = [];
+                      if (table === 'learning_progress') {
+                        data = mockProgressData.filter(item => item[field] === value);
+                      } else if (table === 'posts') {
+                        data = mockPostsData.filter(item => item[field] === value);
+                      } else if (table === 'comments') {
+                        data = mockCommentsData.filter(item => item[field] === value);
+                      } else if (table === 'achievements') {
+                        data = mockAchievementsData;
+                      } else if (table === 'user_achievements') {
+                        data = mockUserAchievementsData.filter(item => item[field] === value);
+                      }
+                      return Promise.resolve({ data, error: null });
+                    }
+                  };
+                },
+                single: () => {
+                  return Promise.resolve({ data: null, error: null });
+                },
+                then: (callback: any) => {
+                  let data = [];
+                  if (table === 'learning_progress') {
+                    data = mockProgressData.filter(item => item[field] === value);
+                  } else if (table === 'posts') {
+                    data = mockPostsData.filter(item => item[field] === value);
+                  } else if (table === 'comments') {
+                    data = mockCommentsData.filter(item => item[field] === value);
+                  } else if (table === 'achievements') {
+                    data = mockAchievementsData;
+                  } else if (table === 'user_achievements') {
+                    data = mockUserAchievementsData.filter(item => item[field] === value);
+                  }
+                  return Promise.resolve({ data, error: null });
+                }
+              };
+            },
+            then: (callback: any) => {
+              let data = [];
+              if (table === 'learning_progress') {
+                data = mockProgressData;
+              } else if (table === 'posts') {
+                data = mockPostsData;
+              } else if (table === 'comments') {
+                data = mockCommentsData;
+              } else if (table === 'achievements') {
+                data = mockAchievementsData;
+              } else if (table === 'user_achievements') {
+                data = mockUserAchievementsData;
+              }
+              return Promise.resolve({ data, error: null });
+            }
+          };
+        },
+        insert: (data: any) => {
+          return {
+            select: (fields: string) => {
+              return {
+                single: () => {
+                  if (table === 'learning_progress') {
+                    mockProgressData.push(data);
+                  } else if (table === 'posts') {
+                    mockPostsData.push(data);
+                  } else if (table === 'comments') {
+                    mockCommentsData.push(data);
+                  } else if (table === 'achievements') {
+                    mockAchievementsData.push(data);
+                  } else if (table === 'user_achievements') {
+                    mockUserAchievementsData.push(data);
+                  }
+                  return Promise.resolve({ data, error: null });
+                },
+                then: (callback: any) => {
+                  if (table === 'learning_progress') {
+                    mockProgressData.push(data);
+                  } else if (table === 'posts') {
+                    mockPostsData.push(data);
+                  } else if (table === 'comments') {
+                    mockCommentsData.push(data);
+                  } else if (table === 'achievements') {
+                    mockAchievementsData.push(data);
+                  } else if (table === 'user_achievements') {
+                    mockUserAchievementsData.push(data);
+                  }
+                  return Promise.resolve({ data, error: null });
+                }
+              };
+            },
+            then: (callback: any) => {
+              if (table === 'learning_progress') {
+                mockProgressData.push(data);
+              } else if (table === 'posts') {
+                mockPostsData.push(data);
+              } else if (table === 'comments') {
+                mockCommentsData.push(data);
+              } else if (table === 'achievements') {
+                mockAchievementsData.push(data);
+              } else if (table === 'user_achievements') {
+                mockUserAchievementsData.push(data);
+              }
+              return Promise.resolve({ data, error: null });
+            }
+          };
+        },
+        update: (data: any) => {
+          return {
+            eq: (field: string, value: any) => {
+              return {
+                select: (fields: string) => {
+                  return {
+                    single: () => {
+                      return Promise.resolve({ data, error: null });
+                    },
+                    then: (callback: any) => {
+                      return Promise.resolve({ data, error: null });
+                    }
+                  };
+                },
+                then: (callback: any) => {
+                  return Promise.resolve({ data, error: null });
+                }
+              };
+            },
+            then: (callback: any) => {
+              return Promise.resolve({ data, error: null });
+            }
+          };
+        },
+        delete: () => {
+          return {
+            eq: (field: string, value: any) => {
+              return {
+                then: (callback: any) => {
+                  return Promise.resolve({ data: null, error: null });
+                }
+              };
+            },
+            then: (callback: any) => {
+              return Promise.resolve({ data: null, error: null });
+            }
+          };
+        }
+      };
+    },
+    rpc: (name: string, params: any) => {
+      return Promise.resolve({ data: null, error: null });
+    }
+  };
+  
+  // 初始化模拟数据
+  mockAchievementsData = [
+    {
+      id: '1',
+      name: 'Python新手',
+      description: '完成第一个Python练习',
+      icon: '🐍',
+      requirement: 1,
+      type: 'exercises',
+      created_at: new Date().toISOString()
+    },
+    {
+      id: '2',
+      name: '练习达人',
+      description: '完成10个Python练习',
+      icon: '🏋️',
+      requirement: 10,
+      type: 'exercises',
+      created_at: new Date().toISOString()
+    },
+    {
+      id: '3',
+      name: '项目初学者',
+      description: '完成第一个Python项目',
+      icon: '📁',
+      requirement: 1,
+      type: 'projects',
+      created_at: new Date().toISOString()
+    }
+  ];
+  
+  mockProgressData = [
+    {
+      id: '1',
+      user_id: 'test-user-1',
+      module_id: 'course-1',
+      module_type: 'course',
+      progress: 50,
+      completed: false,
+      last_updated: new Date().toISOString(),
+      created_at: new Date().toISOString()
+    },
+    {
+      id: '2',
+      user_id: 'test-user-1',
+      module_id: 'exercise-1',
+      module_type: 'exercise',
+      progress: 100,
+      completed: true,
+      last_updated: new Date().toISOString(),
+      created_at: new Date().toISOString()
+    },
+    {
+      id: '3',
+      user_id: 'test-user-1',
+      module_id: 'project-1',
+      module_type: 'project',
+      progress: 75,
+      completed: false,
+      last_updated: new Date().toISOString(),
+      created_at: new Date().toISOString()
+    }
+  ];
+  
+  mockPostsData = [
+    {
+      id: '1',
+      user_id: 'test-user-1',
+      title: '如何学习Python?',
+      content: '我是Python初学者，请问有什么好的学习资源推荐吗？',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    },
+    {
+      id: '2',
+      user_id: 'test-user-2',
+      title: 'Python爬虫实战',
+      content: '分享一个我最近做的爬虫项目，用来爬取网站数据...',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    }
+  ];
+}
+
+export const supabaseAdmin = supabaseAdminInstance;
 
 // 创建学习进度表
 export async function createProgressTable() {

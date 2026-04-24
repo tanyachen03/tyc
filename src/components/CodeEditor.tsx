@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { EditorState } from '@codemirror/state';
-import { EditorView, keymap, lineNumbers, highlightActiveLineGutter, highlightSpecialChars, drawSelection, dropCursor, rectangularSelection, crosshairCursor, highlightActiveLine } from '@codemirror/view';
+import { EditorView, keymap, lineNumbers, highlightActiveLineGutter, highlightSpecialChars, drawSelection, dropCursor, rectangularSelection, crosshairCursor, highlightActiveLine, placeholder } from '@codemirror/view';
 import { python } from '@codemirror/lang-python';
 import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
 import { syntaxHighlighting, defaultHighlightStyle } from '@codemirror/language';
@@ -9,9 +9,11 @@ interface CodeEditorProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  language?: string;
+  height?: string;
 }
 
-const CodeEditor: React.FC<CodeEditorProps> = ({ value, onChange, placeholder = '编写Python代码...' }) => {
+const CodeEditor: React.FC<CodeEditorProps> = ({ value, onChange, placeholder: placeholderText = '编写Python代码...', height = '400px' }) => {
   const editorRef = useRef<HTMLDivElement>(null);
   const viewRef = useRef<EditorView | null>(null);
   const [isMounted, setIsMounted] = useState(false);
@@ -38,7 +40,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ value, onChange, placeholder = 
               onChange(update.state.doc.toString());
             }
           }),
-          EditorView.placeholder.of(placeholder),
+          placeholder(placeholderText),
           EditorView.theme({
             '&': {
               height: '100%',
@@ -95,7 +97,8 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ value, onChange, placeholder = 
   return (
     <div 
       ref={editorRef} 
-      className="w-full h-96 border border-gray-300 rounded-md overflow-hidden"
+      style={{ height, width: '100%' }} 
+      className="border border-gray-300 rounded-md overflow-hidden"
     />
   );
 };

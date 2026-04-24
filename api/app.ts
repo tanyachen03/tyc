@@ -16,6 +16,7 @@ import codeRoutes from './routes/code.js'
 import progressRoutes from './routes/progress.js'
 import communityRoutes from './routes/community.js'
 import achievementsRoutes from './routes/achievements.js'
+import { initDatabase } from './utils/database.js'
 
 // for esm mode
 const __filename = fileURLToPath(import.meta.url)
@@ -30,6 +31,9 @@ app.use(cors())
 app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ extended: true, limit: '10mb' }))
 
+// 初始化数据库
+initDatabase().catch(console.error)
+
 /**
  * API Routes
  */
@@ -37,7 +41,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/code', codeRoutes)
 app.use('/api/progress', progressRoutes)
 app.use('/api/community', communityRoutes)
-app.use('/api', achievementsRoutes)
+app.use('/api/achievements', achievementsRoutes)
 
 /**
  * health

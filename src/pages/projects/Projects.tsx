@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useProgress } from '../../hooks/useProgress';
+import CodeEditor from '../../components/CodeEditor';
 
 // 10个Python项目数据
 const projects = [
   {
-    id: 'proj1',
+    id: 'project-1',
     title: '猜数字游戏',
     description: '创建一个简单的猜数字游戏，玩家需要在有限的次数内猜出计算机生成的随机数',
     difficulty: 'beginner',
@@ -41,7 +43,7 @@ if __name__ == "__main__":
     guess_number()`
   },
   {
-    id: 'proj2',
+    id: 'project-2',
     title: '简单计算器',
     description: '创建一个简单的命令行计算器，支持基本的加减乘除运算',
     difficulty: 'beginner',
@@ -92,7 +94,7 @@ if __name__ == "__main__":
     calculator()`
   },
   {
-    id: 'proj3',
+    id: 'project-3',
     title: '待办事项列表',
     description: '创建一个待办事项列表应用，支持添加、删除和标记完成任务',
     difficulty: 'beginner',
@@ -163,7 +165,7 @@ if __name__ == "__main__":
     todo_list()`
   },
   {
-    id: 'proj4',
+    id: 'project-4',
     title: '文件读写操作',
     description: '创建一个程序，读取文本文件内容，统计单词数量，并将结果写入新文件',
     difficulty: 'intermediate',
@@ -198,7 +200,7 @@ if __name__ == "__main__":
     main()`
   },
   {
-    id: 'proj5',
+    id: 'project-5',
     title: '简单的Web服务器',
     description: '使用Python的http.server模块创建一个简单的Web服务器，提供静态文件访问',
     difficulty: 'intermediate',
@@ -235,7 +237,7 @@ if __name__ == "__main__":
     main()`
   },
   {
-    id: 'proj6',
+    id: 'project-6',
     title: '数据可视化',
     description: '使用matplotlib库创建简单的数据可视化图表，展示一组数据的趋势',
     difficulty: 'intermediate',
@@ -301,7 +303,7 @@ if __name__ == "__main__":
     main()`
   },
   {
-    id: 'proj7',
+    id: 'project-7',
     title: '简单的爬虫',
     description: '使用requests和beautifulsoup库创建一个简单的网页爬虫，获取网页内容并提取信息',
     difficulty: 'intermediate',
@@ -346,7 +348,7 @@ if __name__ == "__main__":
     main()`
   },
   {
-    id: 'proj8',
+    id: 'project-8',
     title: '面向对象编程 - 银行账户',
     description: '使用面向对象编程创建一个银行账户类，支持存款、取款和查询余额等操作',
     difficulty: 'advanced',
@@ -400,7 +402,7 @@ if __name__ == "__main__":
     main()`
   },
   {
-    id: 'proj9',
+    id: 'project-9',
     title: '简单的数据库应用',
     description: '使用SQLite创建一个简单的数据库应用，存储和管理用户信息',
     difficulty: 'advanced',
@@ -534,7 +536,7 @@ if __name__ == "__main__":
     main()`
   },
   {
-    id: 'proj10',
+    id: 'project-10',
     title: '机器学习入门 - 线性回归',
     description: '使用scikit-learn库创建一个简单的线性回归模型，预测房价',
     difficulty: 'advanced',
@@ -617,10 +619,27 @@ if __name__ == "__main__":
 ];
 
 const Projects: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [code, setCode] = useState<string>('');
   const [result, setResult] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
+
+  // 使用 useEffect 根据路由参数初始化项目
+  useEffect(() => {
+    if (id) {
+      const project = projects.find(p => p.id === id);
+      if (project) {
+        setSelectedProject(project);
+        setCode(project.template);
+      }
+    } else {
+      setSelectedProject(null);
+      setCode('');
+    }
+  }, [id]);
 
   // 获取和更新项目进度
   const { progress, completed, updateProgress } = useProgress(
@@ -629,9 +648,7 @@ const Projects: React.FC = () => {
   );
 
   const handleProjectSelect = (project: any) => {
-    setSelectedProject(project);
-    setCode(project.template);
-    setResult('');
+    navigate(`/project/${project.id}`);
   };
 
   const handleRunCode = async () => {
@@ -666,9 +683,7 @@ const Projects: React.FC = () => {
   };
 
   const handleBackToList = () => {
-    setSelectedProject(null);
-    setCode('');
-    setResult('');
+    navigate('/projects');
   };
 
   // 渲染项目列表
@@ -772,10 +787,10 @@ const Projects: React.FC = () => {
           <div className="mb-6">
             <h4 className="text-lg font-medium text-gray-900 mb-3">代码模板</h4>
             <div className="mb-4">
-              <textarea
+              <CodeEditor
                 value={code}
-                onChange={(e) => setCode(e.target.value)}
-                className="w-full h-96 p-4 border border-gray-300 rounded-md font-mono text-sm"
+                onChange={setCode}
+                height="400px"
                 placeholder="编写Python代码..."
               />
             </div>

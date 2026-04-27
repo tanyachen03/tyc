@@ -1,19 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "@/components/Layout";
-import Home from "@/pages/Home";
-import Login from "@/pages/auth/Login";
-import Register from "@/pages/auth/Register";
-import Profile from "@/pages/auth/Profile";
-import Courses from "@/pages/courses/Courses";
-import Chapter from "@/pages/courses/Chapter";
-import CodeExercise from "@/pages/learning/CodeExercise";
-import Exercises from "@/pages/learning/Exercises";
-import Projects from "@/pages/projects/Projects";
-import CodeRunner from "@/pages/CodeRunner";
-import Community from "@/pages/community/Community";
-import Progress from "@/pages/Progress";
-import Achievements from "@/pages/Achievements";
-import Recommendations from "@/pages/Recommendations";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import Profile from "./pages/auth/Profile";
+import Courses from "./pages/courses/Courses";
+import Chapter from "./pages/courses/Chapter";
+import CodeExercise from "./pages/learning/CodeExercise";
+import Exercises from "./pages/learning/Exercises";
+import Projects from "./pages/projects/Projects";
+import CodeRunner from "./pages/CodeRunner";
+import Community from "./pages/community/Community";
+import Progress from "./pages/Progress";
+import Achievements from "./pages/Achievements";
+import Recommendations from "./pages/Recommendations";
 
 export default function App() {
   return (
